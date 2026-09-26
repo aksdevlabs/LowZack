@@ -1,0 +1,679 @@
+/* =========================================================
+   LOWZACK
+   ADMIN NAVBAR
+   SIDEBAR — PREMIUM DARK EDITORIAL
+========================================================= */
+
+:root {
+  --admin-sidebar-width: 250px;
+
+  --admin-navbar-bg: #080808;
+  --admin-navbar-panel: #0b0b0b;
+  --admin-navbar-border: rgba(255, 255, 255, 0.075);
+  --admin-navbar-border-soft: rgba(255, 255, 255, 0.045);
+
+  --admin-navbar-text: #f2f2f2;
+  --admin-navbar-muted: #5f5f5f;
+  --admin-navbar-muted-2: #3d3d3d;
+
+  --admin-navbar-gold: #d4af37;
+  --admin-navbar-gold-soft: rgba(212, 175, 55, 0.10);
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.admin-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+
+  width: var(--admin-sidebar-width);
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background:
+    linear-gradient(
+      180deg,
+      #0b0b0b 0%,
+      #080808 48%,
+      #070707 100%
+    );
+
+  border-right: 1px solid var(--admin-navbar-border);
+
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.admin-sidebar::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 0;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(212, 175, 55, 0.08),
+      transparent 22%,
+      transparent 78%,
+      rgba(212, 175, 55, 0.05)
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SIDEBAR TOP / BRAND
+========================================================= */
+
+.admin-sidebar-top {
+  min-height: 82px;
+
+  padding: 23px 24px 21px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--admin-navbar-border-soft);
+}
+
+.admin-brand {
+  display: flex;
+  flex-direction: column;
+
+  color: #fff;
+  text-decoration: none;
+
+  min-width: 0;
+}
+
+.admin-brand-name {
+  font-family:
+    Arial Black,
+    Helvetica Neue,
+    Arial,
+    sans-serif;
+
+  font-size: 18px;
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.14em;
+}
+
+.admin-brand-label {
+  margin-top: 9px;
+
+  color: var(--admin-navbar-gold);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: 0.20em;
+}
+
+.admin-brand:hover .admin-brand-name {
+  color: var(--admin-navbar-gold);
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.admin-navigation {
+  padding: 18px 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.admin-nav-item {
+  position: relative;
+
+  width: 100%;
+  min-height: 46px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 13px;
+
+  appearance: none;
+
+  background: transparent;
+
+  border: 1px solid transparent;
+
+  color: #4e4e4e;
+
+  text-align: left;
+  text-decoration: none;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: 0.14em;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+
+  box-sizing: border-box;
+}
+
+.admin-nav-item:hover:not(.disabled) {
+  color: #dedede;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.admin-nav-item.active {
+  color: #e9e9e9;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(212, 175, 55, 0.085),
+      rgba(212, 175, 55, 0.018) 65%,
+      transparent
+    );
+
+  border-color: rgba(212, 175, 55, 0.14);
+}
+
+.admin-nav-item.active::before {
+  content: "";
+
+  position: absolute;
+
+  top: 9px;
+  bottom: 9px;
+  left: -1px;
+
+  width: 1px;
+
+  background: var(--admin-navbar-gold);
+}
+
+.admin-nav-item.disabled {
+  color: #323232;
+  cursor: not-allowed;
+}
+
+.admin-nav-icon {
+  width: 16px;
+
+  flex: 0 0 16px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #444;
+
+  font-size: 12px;
+
+  line-height: 1;
+}
+
+.admin-nav-item.active .admin-nav-icon {
+  color: var(--admin-navbar-gold);
+}
+
+.admin-nav-count {
+  margin-left: auto;
+
+  min-width: 21px;
+  height: 21px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  color: #8c8c8c;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0;
+
+  box-sizing: border-box;
+}
+
+.admin-nav-item.active .admin-nav-count {
+  color: var(--admin-navbar-gold);
+
+  border-color: rgba(212, 175, 55, 0.20);
+
+  background: rgba(212, 175, 55, 0.04);
+}
+
+.admin-coming {
+  margin-left: auto;
+
+  color: #2e2e2e;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: 0.07em;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM / ACCOUNT
+========================================================= */
+
+.admin-sidebar-bottom {
+  margin-top: auto;
+
+  padding: 18px 14px 20px;
+
+  border-top: 1px solid var(--admin-navbar-border-soft);
+}
+
+.admin-account {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 9px;
+}
+
+.admin-avatar {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(212, 175, 55, 0.38);
+
+  color: var(--admin-navbar-gold);
+
+  font-family: Georgia, serif;
+
+  font-size: 12px;
+
+  box-sizing: border-box;
+}
+
+.admin-account-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.admin-account-info strong {
+  overflow: hidden;
+
+  color: #bcbcbc;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: 0.08em;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-account-info span {
+  overflow: hidden;
+
+  color: #3f3f3f;
+
+  font-size: 7px;
+
+  line-height: 1.2;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   LOG OUT
+   LOCKED SIZE SO OTHER PAGE CSS CANNOT SHRINK IT
+========================================================= */
+
+.admin-logout {
+  width: 100%;
+  min-height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0 10px;
+
+  appearance: none;
+
+  background: transparent;
+
+  border: 1px solid transparent;
+
+  color: #505050;
+
+  font-family: inherit;
+
+  font-size: 12px !important;
+  font-weight: 700 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: 0.14em !important;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.admin-logout > span {
+  font-family: inherit;
+
+  line-height: 1 !important;
+
+  letter-spacing: 0.14em !important;
+}
+
+.admin-logout > span:first-child {
+  flex: 0 0 auto;
+
+  color: #676767;
+
+  font-size: 12px !important;
+
+  letter-spacing: 0 !important;
+}
+
+.admin-logout > span:last-child {
+  flex: 0 0 auto;
+
+  color: inherit;
+
+  font-size: 12px !important;
+  font-weight: 700 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: 0.14em !important;
+}
+
+.admin-logout:hover:not(:disabled) {
+  color: #d0d0d0;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border-color: var(--admin-navbar-border-soft);
+}
+
+.admin-logout:hover:not(:disabled) > span:first-child {
+  color: #8a8a8a;
+}
+
+.admin-logout:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   MOBILE CLOSE BUTTON
+========================================================= */
+
+.admin-mobile-close {
+  display: none;
+
+  padding: 0;
+
+  appearance: none;
+
+  background: transparent;
+
+  border: 0;
+
+  color: #666;
+
+  font-size: 20px;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.admin-mobile-close:hover {
+  color: #fff;
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.admin-menu-button {
+  display: none;
+
+  position: fixed;
+
+  top: 14px;
+  left: 14px;
+
+  width: 40px;
+  height: 40px;
+
+  z-index: 1100;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  padding: 0;
+
+  background: rgba(8, 8, 8, 0.94);
+
+  border: 1px solid var(--admin-navbar-border);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+.admin-menu-button span {
+  width: 15px;
+  height: 1px;
+
+  display: block;
+
+  background: #aaa;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background 0.2s ease;
+}
+
+.admin-menu-button:hover span {
+  background: #fff;
+}
+
+.admin-menu-button[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.admin-menu-button[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.admin-menu-button[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE OVERLAY
+========================================================= */
+
+.admin-mobile-overlay {
+  display: none;
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 900;
+
+  padding: 0;
+
+  background: rgba(0, 0, 0, 0.70);
+
+  border: 0;
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .admin-sidebar {
+    width: min(280px, 86vw);
+
+    transform: translateX(-101%);
+
+    transition: transform 0.28s ease;
+  }
+
+  .admin-sidebar.admin-sidebar-open {
+    transform: translateX(0);
+  }
+
+  .admin-mobile-close {
+    display: block;
+  }
+
+  .admin-menu-button {
+    display: flex;
+  }
+
+  .admin-mobile-overlay {
+    display: block;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .admin-sidebar-top {
+    min-height: 68px;
+
+    padding: 18px 17px 15px;
+  }
+
+  .admin-brand-name {
+    font-size: 14px;
+  }
+
+  .admin-brand-label {
+    font-size: 5px;
+  }
+
+  .admin-navigation {
+    padding: 18px 12px;
+  }
+
+  .admin-nav-item {
+    min-height: 44px;
+
+    font-size: 8px;
+  }
+
+  .admin-sidebar-bottom {
+    padding-bottom: 12px;
+  }
+
+  /*
+     Keep LOG OUT consistent on mobile too.
+     The previous page-specific CSS cannot shrink it.
+  */
+  .admin-logout {
+    font-size: 12px !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  .admin-logout > span:last-child {
+    font-size: 12px !important;
+    letter-spacing: 0.14em !important;
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .admin-sidebar,
+  .admin-nav-item,
+  .admin-logout,
+  .admin-menu-button span {
+    transition: none !important;
+  }
+
+}

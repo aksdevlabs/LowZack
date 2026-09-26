@@ -1,0 +1,1528 @@
+/* =========================================================
+   LOWZACK — DISCOGRAPHY
+   PREMIUM / MINIMAL / EDITORIAL
+========================================================= */
+
+.discography-page {
+
+  --bg: #070707;
+
+  --text: #f4f4f1;
+
+  --muted: #858585;
+
+  --gold: #c8a96b;
+
+  --line: rgba(255,255,255,.11);
+
+  --soft-line: rgba(255,255,255,.055);
+
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  color: var(--text);
+
+  background:
+
+    radial-gradient(
+      circle at 72% 7%,
+      rgba(200,169,107,.075),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 10% 35%,
+      rgba(255,255,255,.025),
+      transparent 28%
+    ),
+
+    linear-gradient(
+      180deg,
+      #0a0a0a 0%,
+      #070707 42%,
+      #050505 100%
+    );
+}
+
+
+/* =========================================================
+   NOISE / GRID
+========================================================= */
+
+.discography-noise {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  opacity: .18;
+
+  background-image:
+
+    linear-gradient(
+      rgba(255,255,255,.018) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.012) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    80px 80px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 92%
+    );
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.discography-hero {
+
+  padding:
+    clamp(120px,15vw,210px)
+    6vw
+    70px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+
+.discography-hero-inner {
+
+  width:
+    min(
+      1500px,
+      100%
+    );
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   KICKER
+========================================================= */
+
+.discography-kicker {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 34px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: .24em;
+}
+
+
+.discography-kicker-line {
+
+  width: 34px;
+
+  height: 1px;
+
+  background:
+    var(--gold);
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.discography-heading-row {
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 50px;
+}
+
+
+.discography-heading-row h1 {
+
+  margin: 0;
+
+  font-size:
+    clamp(
+      54px,
+      9.2vw,
+      148px
+    );
+
+  font-weight: 500;
+
+  letter-spacing: -.075em;
+
+  line-height: .84;
+}
+
+
+.discography-heading-row p {
+
+  max-width: 520px;
+
+  margin:
+    30px 0 0;
+
+  color: #8e8e8e;
+
+  font-size: 13px;
+
+  letter-spacing: .035em;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   COUNT
+========================================================= */
+
+.discography-count {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  padding-bottom: 7px;
+}
+
+
+.discography-count span {
+
+  margin-bottom: 8px;
+
+  color: #676767;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: .2em;
+}
+
+
+.discography-count strong {
+
+  color: var(--gold);
+
+  font-size: 30px;
+
+  font-weight: 400;
+
+  letter-spacing: -.04em;
+}
+
+
+/* =========================================================
+   MAIN WIDTH
+========================================================= */
+
+.discography-list-section,
+.discography-footer {
+
+  width:
+    min(
+      1500px,
+      calc(100% - 12vw)
+    );
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   LIST HEADER
+========================================================= */
+
+.discography-list-header {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(90px,.42fr)
+    minmax(320px,2.8fr)
+    minmax(150px,1fr)
+    minmax(100px,.55fr);
+
+  padding:
+    22px 0
+    18px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+
+  color: #595959;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: .2em;
+}
+
+
+.discography-list-header span:last-child {
+  text-align: right;
+}
+
+
+/* =========================================================
+   LIST
+========================================================= */
+
+.discography-list {
+
+  border-bottom:
+    1px solid
+    var(--line);
+}
+
+
+/* =========================================================
+   RELEASE ROW
+========================================================= */
+
+.discography-row {
+
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(90px,.42fr)
+    minmax(320px,2.8fr)
+    minmax(150px,1fr)
+    minmax(100px,.55fr);
+
+  align-items: center;
+
+  min-height: 126px;
+
+  padding:
+    20px 0;
+
+  color: inherit;
+
+  text-decoration: none;
+
+  border-bottom:
+    1px solid
+    var(--soft-line);
+
+  transition:
+    background-color 260ms ease,
+    padding 260ms ease,
+    border-color 260ms ease;
+}
+
+
+.discography-row:last-child {
+  border-bottom: 0;
+}
+
+
+/* =========================================================
+   HOVER BACKGROUND
+========================================================= */
+
+.discography-row::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset:
+    0 -22px;
+
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012) 55%,
+      transparent
+    );
+
+  opacity: 0;
+
+  transition:
+    opacity 260ms ease;
+}
+
+
+.discography-row.has-link:hover {
+
+  padding-left: 10px;
+
+  padding-right: 10px;
+
+  border-bottom-color:
+    rgba(200,169,107,.22);
+}
+
+
+.discography-row.has-link:hover::before {
+  opacity: 1;
+}
+
+
+.discography-row.no-link {
+  cursor: default;
+}
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+.discography-year {
+
+  color: #6e6e6e;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  letter-spacing: .12em;
+}
+
+
+/* =========================================================
+   RELEASE
+========================================================= */
+
+.discography-release {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   INDEX
+========================================================= */
+
+.discography-index {
+
+  flex:
+    0 0 26px;
+
+  color: #414141;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: .08em;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.discography-title-wrap {
+  min-width: 0;
+}
+
+
+.discography-title-wrap h2 {
+
+  margin: 0;
+
+  color: #e9e9e7;
+
+  font-size:
+    clamp(
+      20px,
+      2vw,
+      30px
+    );
+
+  font-weight: 450;
+
+  letter-spacing: -.045em;
+
+  line-height: 1.1;
+
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+
+.discography-row.has-link:hover
+.discography-title-wrap h2 {
+
+  color: #fff;
+
+  transform:
+    translateX(4px);
+}
+
+
+/* =========================================================
+   ARTIST NAME
+   GOLD
+========================================================= */
+
+.discography-artist {
+
+  color: var(--gold);
+
+  font-weight: 600;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   YOUTUBE VIEWS
+   GREEN / POPULARITY
+========================================================= */
+
+.discography-views {
+
+  color: #4ade80;
+
+  font-weight: 600;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 14px
+    rgba(74,222,128,.08);
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.discography-meta {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap:
+    9px 16px;
+
+  margin-top: 9px;
+
+  color: #686868;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  letter-spacing: .11em;
+
+  text-transform: uppercase;
+}
+
+
+.discography-meta span + span::before {
+
+  content: "";
+
+  width: 3px;
+
+  height: 3px;
+
+  margin-right: 16px;
+
+  border-radius: 50%;
+
+  background:
+    #484848;
+}
+
+
+/* =========================================================
+   FORMAT
+========================================================= */
+
+.discography-format {
+
+  color: #707070;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: .17em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ACTION
+========================================================= */
+
+.discography-action {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 14px;
+
+  color: #696969;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: .17em;
+}
+
+
+.discography-action-label {
+
+  transition:
+    color 220ms ease;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.discography-arrow {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 30px;
+
+  height: 30px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  border-radius: 50%;
+
+  color: #8a8a8a;
+
+  font-size: 14px;
+
+  transition:
+    color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+}
+
+
+/* =========================================================
+   LINK HOVER
+========================================================= */
+
+.discography-row.has-link:hover
+.discography-action-label {
+
+  color: var(--gold);
+}
+
+
+.discography-row.has-link:hover
+.discography-arrow {
+
+  border-color:
+    rgba(200,169,107,.6);
+
+  color: var(--gold);
+
+  transform:
+    translate(3px,-3px);
+}
+
+
+/* =========================================================
+   NO LINK
+========================================================= */
+
+.discography-row.no-link
+.discography-action {
+
+  opacity: .42;
+}
+
+
+/* =========================================================
+   MOBILE TYPE
+========================================================= */
+
+.discography-type-mobile {
+  display: none !important;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.discography-footer {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr 1fr;
+
+  align-items: center;
+
+  padding:
+    32px 0
+    42px;
+
+  color: #494949;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: .18em;
+}
+
+
+/* =========================================================
+   FOOTER ARTIST NAME
+   LOWZACK = GOLD
+========================================================= */
+
+.discography-footer span:first-child {
+
+  color: var(--gold);
+
+  font-weight: 600;
+
+  letter-spacing: .22em;
+
+  text-shadow:
+    0 0 18px
+    rgba(200,169,107,.08);
+}
+
+
+.discography-footer-center {
+  text-align: center;
+}
+
+
+.discography-footer-right {
+  text-align: right;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width:900px) {
+
+  .discography-heading-row {
+    align-items: flex-start;
+  }
+
+
+  .discography-count {
+    display: none;
+  }
+
+
+  .discography-list-header,
+  .discography-row {
+
+    grid-template-columns:
+      72px
+      minmax(0,1fr)
+      100px;
+  }
+
+
+  .discography-list-header span:nth-child(3),
+  .discography-format {
+    display: none;
+  }
+
+
+  .discography-release {
+    gap: 18px;
+  }
+
+
+  .discography-type-mobile {
+    display: inline-flex !important;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:640px) {
+
+  .discography-hero {
+
+    padding:
+      105px
+      22px
+      48px;
+  }
+
+
+  .discography-kicker {
+
+    margin-bottom: 25px;
+
+    font-size: 8px;
+  }
+
+
+  .discography-heading-row h1 {
+
+    font-size:
+      clamp(
+        46px,
+        15vw,
+        76px
+      );
+  }
+
+
+  .discography-heading-row p {
+
+    margin-top: 22px;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+  }
+
+
+  .discography-list-section,
+  .discography-footer {
+
+    width:
+      calc(
+        100% - 44px
+      );
+  }
+
+
+  .discography-list-header,
+  .discography-row {
+
+    grid-template-columns:
+      58px
+      minmax(0,1fr)
+      70px;
+  }
+
+
+  .discography-list-header {
+
+    padding:
+      17px 0
+      14px;
+
+    font-size: 7px;
+  }
+
+
+  .discography-row {
+
+    min-height: 104px;
+
+    padding:
+      16px 0;
+  }
+
+
+  .discography-row::before {
+
+    left: -10px;
+
+    right: -10px;
+  }
+
+
+  .discography-release {
+    gap: 12px;
+  }
+
+
+  .discography-index {
+
+    flex-basis: 18px;
+
+    font-size: 7px;
+  }
+
+
+  .discography-title-wrap h2 {
+
+    font-size: 19px;
+
+    letter-spacing: -.035em;
+  }
+
+
+  .discography-meta {
+
+    margin-top: 7px;
+
+    font-size: 7px;
+  }
+
+
+  .discography-action {
+
+    gap: 7px;
+
+    font-size: 6px;
+  }
+
+
+  .discography-arrow {
+
+    width: 25px;
+
+    height: 25px;
+
+    font-size: 12px;
+  }
+
+
+  /* =======================================================
+     MOBILE ARTIST NAME
+  ======================================================= */
+
+  .discography-artist {
+
+    color: var(--gold);
+  }
+
+
+  .discography-footer {
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 18px;
+
+    padding:
+      26px 0
+      32px;
+  }
+
+
+  .discography-footer-center {
+    display: none;
+  }
+
+
+  .discography-footer-right {
+    text-align: right;
+  }
+
+
+  .discography-footer span:first-child {
+    color: var(--gold);
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion:reduce) {
+
+  .discography-row,
+  .discography-row::before,
+  .discography-title-wrap h2,
+  .discography-action-label,
+  .discography-arrow {
+
+    transition: none;
+  }
+
+}
+
+/* =========================================================
+   RELEASE META ORDER
+   TITLE
+   ↓
+   VIEWS
+   ↓
+   FT
+========================================================= */
+
+.discography-title-wrap .discography-meta {
+  align-items: center;
+}
+
+.discography-title-wrap .discography-meta .discography-views {
+  order: 1;
+}
+
+.discography-title-wrap .discography-meta .discography-artist {
+  order: 2;
+}
+
+.discography-title-wrap .discography-meta .discography-type-mobile {
+  order: 3;
+}
+
+@media (max-width: 640px) {
+
+  .discography-title-wrap .discography-meta {
+    gap: 7px 12px;
+  }
+
+  .discography-views {
+    font-size: 7px;
+  }
+
+  .discography-artist {
+    font-size: 7px;
+  }
+}
+
+/* =========================================================
+   LOWZACK — FINAL SMALL MOBILE REFINEMENT
+   ---------------------------------------------------------
+   TARGET:
+   - Small mobile phones
+   - Prevent DISCOGRAPHY heading from being clipped
+   - Keep YEAR / RELEASE / LINK aligned
+   - Make release rows tighter and cleaner
+   - Prevent long titles from breaking the layout
+   - Preserve the existing desktop / tablet / mobile design
+========================================================= */
+
+@media (max-width: 420px) {
+
+  /* -------------------------------------------------------
+     PAGE
+  ------------------------------------------------------- */
+
+  .discography-page {
+    overflow-x: hidden;
+  }
+
+
+  /* -------------------------------------------------------
+     HERO
+  ------------------------------------------------------- */
+
+  .discography-hero {
+    padding:
+      92px
+      20px
+      38px;
+  }
+
+  .discography-kicker {
+    gap: 10px;
+    margin-bottom: 22px;
+
+    font-size: 7px;
+    letter-spacing: .21em;
+  }
+
+  .discography-kicker-line {
+    width: 34px;
+  }
+
+
+  /* -------------------------------------------------------
+     DISCOGRAPHY TITLE
+     Smaller so it never gets cut on 360–420px screens.
+  ------------------------------------------------------- */
+
+  .discography-heading-row {
+    width: 100%;
+    min-width: 0;
+
+    display: block;
+  }
+
+  .discography-heading-row h1 {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+
+    font-size:
+      clamp(
+        39px,
+        11.4vw,
+        48px
+      );
+
+    font-weight: 500;
+
+    letter-spacing: -.075em;
+    line-height: .88;
+
+    white-space: nowrap;
+  }
+
+  .discography-heading-row p {
+    width: 100%;
+    max-width: 350px;
+
+    margin:
+      20px
+      0
+      0;
+
+    font-size: 10px;
+    line-height: 1.7;
+    letter-spacing: .02em;
+  }
+
+
+  /* -------------------------------------------------------
+     LIST WIDTH
+  ------------------------------------------------------- */
+
+  .discography-list-section,
+  .discography-footer {
+    width:
+      calc(
+        100% - 40px
+      );
+
+    max-width: 100%;
+  }
+
+
+  /* -------------------------------------------------------
+     LIST HEADER
+  ------------------------------------------------------- */
+
+  .discography-list-header,
+  .discography-row {
+
+    grid-template-columns:
+      50px
+      minmax(0, 1fr)
+      58px;
+  }
+
+  .discography-list-header {
+    padding:
+      14px
+      0
+      12px;
+
+    font-size: 6px;
+    letter-spacing: .17em;
+  }
+
+  .discography-list-header span:first-child {
+    text-align: left;
+  }
+
+  .discography-list-header span:nth-child(2) {
+    padding-left: 0;
+  }
+
+  .discography-list-header span:last-child {
+    text-align: right;
+  }
+
+
+  /* -------------------------------------------------------
+     RELEASE ROW
+  ------------------------------------------------------- */
+
+  .discography-row {
+    min-height: 94px;
+
+    padding:
+      14px
+      0;
+  }
+
+  .discography-row::before {
+    left: -7px;
+    right: -7px;
+  }
+
+
+  /* -------------------------------------------------------
+     RELEASE / INDEX / TITLE
+  ------------------------------------------------------- */
+
+  .discography-release {
+    min-width: 0;
+
+    gap: 8px;
+  }
+
+  .discography-index {
+    flex:
+      0 0 16px;
+
+    font-size: 6px;
+    letter-spacing: .06em;
+  }
+
+  .discography-title-wrap {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .discography-title-wrap h2 {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 16px;
+    font-weight: 450;
+
+    letter-spacing: -.035em;
+    line-height: 1.08;
+
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+
+  /* -------------------------------------------------------
+     META
+     Views / Artist / Type
+  ------------------------------------------------------- */
+
+  .discography-title-wrap .discography-meta {
+    display: flex;
+
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap:
+      4px
+      8px;
+
+    margin-top: 6px;
+
+    font-size: 6px;
+    line-height: 1.25;
+  }
+
+  .discography-views,
+  .discography-artist {
+    font-size: 6px;
+    line-height: 1.25;
+  }
+
+  .discography-meta span + span::before {
+    width: 2px;
+    height: 2px;
+
+    margin-right: 8px;
+  }
+
+
+  /* -------------------------------------------------------
+     ACTION / YOUTUBE
+  ------------------------------------------------------- */
+
+  .discography-action {
+    min-width: 0;
+
+    gap: 5px;
+
+    font-size: 5px;
+    letter-spacing: .13em;
+  }
+
+  .discography-action-label {
+    white-space: nowrap;
+  }
+
+  .discography-arrow {
+    flex:
+      0 0 24px;
+
+    width: 24px;
+    height: 24px;
+
+    font-size: 11px;
+  }
+
+
+  /* -------------------------------------------------------
+     FOOTER
+  ------------------------------------------------------- */
+
+  .discography-footer {
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 12px;
+
+    padding:
+      22px
+      0
+      28px;
+
+    font-size: 6px;
+    letter-spacing: .13em;
+  }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE — 360px AND BELOW
+   ---------------------------------------------------------
+   Additional compression for narrow phones.
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .discography-hero {
+    padding:
+      86px
+      16px
+      34px;
+  }
+
+  .discography-kicker {
+    margin-bottom: 20px;
+
+    font-size: 6.5px;
+    letter-spacing: .18em;
+  }
+
+  .discography-kicker-line {
+    width: 29px;
+  }
+
+  .discography-heading-row h1 {
+    font-size:
+      clamp(
+        35px,
+        11.6vw,
+        42px
+      );
+
+    letter-spacing: -.078em;
+  }
+
+  .discography-heading-row p {
+    max-width: 315px;
+
+    margin-top: 18px;
+
+    font-size: 9px;
+    line-height: 1.65;
+  }
+
+
+  .discography-list-section,
+  .discography-footer {
+    width:
+      calc(
+        100% - 32px
+      );
+  }
+
+
+  .discography-list-header,
+  .discography-row {
+    grid-template-columns:
+      45px
+      minmax(0, 1fr)
+      53px;
+  }
+
+  .discography-list-header {
+    padding:
+      13px
+      0
+      11px;
+
+    font-size: 5.5px;
+    letter-spacing: .14em;
+  }
+
+  .discography-row {
+    min-height: 90px;
+
+    padding:
+      13px
+      0;
+  }
+
+  .discography-row::before {
+    left: -5px;
+    right: -5px;
+  }
+
+
+  .discography-release {
+    gap: 6px;
+  }
+
+  .discography-index {
+    flex-basis: 14px;
+
+    font-size: 5.5px;
+  }
+
+  .discography-title-wrap h2 {
+    font-size: 14.5px;
+
+    letter-spacing: -.032em;
+    line-height: 1.08;
+  }
+
+  .discography-title-wrap .discography-meta {
+    gap:
+      3px
+      6px;
+
+    margin-top: 5px;
+  }
+
+  .discography-views,
+  .discography-artist {
+    font-size: 5.5px;
+  }
+
+  .discography-meta span + span::before {
+    margin-right: 6px;
+  }
+
+  .discography-action {
+    gap: 4px;
+
+    font-size: 4.5px;
+    letter-spacing: .11em;
+  }
+
+  .discography-arrow {
+    flex-basis: 22px;
+
+    width: 22px;
+    height: 22px;
+
+    font-size: 10px;
+  }
+
+  .discography-footer {
+    gap: 10px;
+
+    padding:
+      20px
+      0
+      25px;
+
+    font-size: 5.5px;
+    letter-spacing: .11em;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE — PREVENT TITLE COLLISION
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .discography-title-wrap h2,
+  .discography-artist,
+  .discography-views,
+  .discography-type-mobile {
+    min-width: 0;
+  }
+
+  .discography-title-wrap {
+    overflow: hidden;
+  }
+
+  .discography-title-wrap h2 {
+    overflow: visible;
+  }
+
+  .discography-action {
+    justify-self: end;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE — SAFE TOUCH TARGET
+========================================================= */
+
+@media (max-width: 420px) and (hover: none) and (pointer: coarse) {
+
+  .discography-arrow {
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+}

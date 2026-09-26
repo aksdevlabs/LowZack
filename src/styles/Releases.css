@@ -1,0 +1,4139 @@
+
+
+/* =========================================================
+   FINAL ROUTE TRANSITION FIX
+   KEEP VIEWPORT WIDTH STABLE WHEN SCROLLBAR APPEARS/DISAPPEARS
+========================================================= */
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Fallback for browsers that do not support scrollbar-gutter. */
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
+/* Prevent accidental horizontal layout expansion during route changes. */
+html,
+body,
+#root {
+  max-width: 100%;
+}
+
+/* =========================================================
+   LOWZACK
+   RELEASES
+   PREMIUM / CINEMATIC / EDITORIAL
+========================================================= */
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+.lowzack-karya-page {
+  --page-bg: #050505;
+  --page-bg-soft: #080808;
+
+  --surface: #0b0b0b;
+  --surface-2: #101010;
+  --surface-3: #151515;
+
+  --line: rgba(255, 255, 255, 0.09);
+  --line-soft: rgba(255, 255, 255, 0.055);
+
+  --text: #f4f4f4;
+  --text-soft: #b9b9b9;
+  --text-muted: #777777;
+  --text-dark: #4d4d4d;
+
+  --accent: #D4AF37;
+  --accent-soft: #E7C96A;
+  --accent-dark: #A98518;
+
+  width: 100%;
+  min-height: 100vh;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 50% -12%,
+      rgba(255, 255, 255, 0.045),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      #050505 0%,
+      #070707 45%,
+      #050505 100%
+    );
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+.lowzack-karya-page *,
+.lowzack-karya-page *::before,
+.lowzack-karya-page *::after {
+  box-sizing: border-box;
+}
+
+.lowzack-karya-page button,
+.lowzack-karya-page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lowzack-karya-page button {
+  font: inherit;
+}
+
+.lowzack-karya-page img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.karya-header {
+  width: 100%;
+
+  padding:
+    150px
+    75px
+    65px;
+
+  border-bottom:
+    1px solid
+    var(--line-soft);
+
+  background:
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(255, 255, 255, 0.035),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #090909 0%,
+      #060606 100%
+    );
+}
+
+.karya-header-inner {
+  width: min(1400px, 100%);
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 60px;
+}
+
+.karya-heading {
+  max-width: 820px;
+}
+
+.karya-eyebrow {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: #858585;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 4px;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+/* GOLD BOX — RELEASES TITLE */
+.karya-heading h1 {
+  display: inline-block;
+  padding: 14px 22px 12px;
+
+  color: #000000;
+
+  background:
+    linear-gradient(
+      135deg,
+      #B8860B 0%,
+      #D4AF37 45%,
+      #F0D878 100%
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.22);
+
+  -webkit-text-fill-color: #000000;
+}
+
+.karya-heading h1 {
+  margin: 0;
+
+  color: #f5f5f5;
+
+  font-size: clamp(
+    58px,
+    9vw,
+    150px
+  );
+
+  font-weight: 800;
+
+  letter-spacing: -0.065em;
+  line-height: 0.82;
+
+  text-transform: uppercase;
+}
+
+.karya-heading p {
+  max-width: 560px;
+
+  margin:
+    32px
+    0
+    0;
+
+  color: #858585;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   TOTAL COUNT
+========================================================= */
+
+.karya-count {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: flex-end;
+
+  gap: 12px;
+
+  padding-bottom: 4px;
+}
+
+.karya-count span {
+  color: #f2f2f2;
+
+  font-size: 48px;
+  font-weight: 300;
+
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+}
+
+.karya-count small {
+  color: #666666;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MAIN COLLECTION
+========================================================= */
+
+.karya-section {
+  width: 100%;
+
+  padding:
+    70px
+    75px
+    120px;
+}
+
+.karya-container {
+  width: min(1400px, 100%);
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   RELEASES CONTAINER
+========================================================= */
+
+.karya-releases-container {
+  width: min(
+    1400px,
+    100%
+  );
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   CATEGORY SECTION
+========================================================= */
+
+.karya-category-section {
+  width: 100%;
+
+  padding:
+    0
+    0
+    90px;
+
+  margin:
+    0
+    0
+    90px;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.055);
+}
+
+.karya-category-section:last-child {
+  margin-bottom: 0;
+
+  padding-bottom: 0;
+
+  border-bottom: 0;
+}
+
+
+/* =========================================================
+   CATEGORY HEADING
+========================================================= */
+
+.karya-category-heading {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 22px;
+}
+
+.karya-category-title-wrap {
+  min-width: 0;
+
+  display: flex;
+  align-items: baseline;
+
+  gap: 18px;
+}
+
+.karya-category-number {
+  flex: 0 0 auto;
+
+  color: #5a5a5a;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  line-height: 1;
+}
+
+.karya-category-heading h2 {
+  margin: 0;
+
+  color: #f0f0f0;
+
+  font-size: clamp(
+    25px,
+    3vw,
+    43px
+  );
+
+  font-weight: 800;
+
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+
+  text-transform: uppercase;
+}
+
+.karya-category-count {
+  flex: 0 0 auto;
+
+  color: #555555;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   CATEGORY LINE
+========================================================= */
+
+.karya-category-line {
+  width: 100%;
+  height: 1px;
+
+  margin-bottom: 30px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.045)
+    );
+}
+
+
+/* =========================================================
+   CATEGORY EMPTY
+========================================================= */
+
+.karya-category-empty {
+  min-height: 180px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding:
+    35px
+    0;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.025);
+}
+
+.karya-category-empty span {
+  color: #555555;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+
+  text-transform: uppercase;
+}
+
+.karya-category-empty small {
+  color: #3f3f3f;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   LOADING / ERROR / EMPTY GLOBAL STATE
+========================================================= */
+
+.karya-state {
+  min-height: 360px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  border-top:
+    1px solid
+    var(--line-soft);
+
+  border-bottom:
+    1px solid
+    var(--line-soft);
+
+  color: #777777;
+
+  text-align: center;
+}
+
+.karya-state > span {
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+.karya-state small {
+  color: #4e4e4e;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+.karya-error > span {
+  color: #999999;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.karya-loader {
+  width: 26px;
+  height: 26px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
+
+  border-top-color: #f2f2f2;
+
+  border-radius: 50%;
+
+  animation:
+    karyaSpin
+    800ms
+    linear
+    infinite;
+}
+
+@keyframes karyaSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   RELEASE GRID
+========================================================= */
+
+.karya-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  column-gap: 18px;
+  row-gap: 42px;
+}
+
+
+/* =========================================================
+   RELEASE CARD
+========================================================= */
+
+.karya-card {
+  min-width: 0;
+
+  position: relative;
+
+  padding: 0;
+}
+
+
+/* =========================================================
+   THUMBNAIL
+========================================================= */
+
+.karya-thumbnail {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  border-radius: 0;
+
+  color: inherit;
+
+  background:
+    linear-gradient(
+      135deg,
+      #111111,
+      #080808
+    );
+
+  cursor: pointer;
+
+  isolation: isolate;
+}
+
+.karya-thumbnail-static {
+  cursor: default;
+}
+
+.karya-thumbnail img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transform: scale(1);
+
+  filter:
+    grayscale(0%)
+    contrast(1)
+    brightness(1);
+
+  transition:
+    transform
+      700ms
+      cubic-bezier(
+        0.2,
+        0.7,
+        0.2,
+        1
+      );
+}
+
+.karya-card:hover
+.karya-thumbnail img {
+  transform: scale(1.045);
+
+  filter:
+    grayscale(0%)
+    contrast(1)
+    brightness(1);
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.karya-image-overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.02)
+        0%,
+      rgba(0, 0, 0, 0.04)
+        40%,
+      rgba(0, 0, 0, 0.76)
+        100%
+    );
+
+  pointer-events: none;
+
+  transition:
+    background
+    500ms
+    ease;
+}
+
+.karya-card:hover
+.karya-image-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.02)
+        0%,
+      rgba(0, 0, 0, 0.02)
+        42%,
+      rgba(0, 0, 0, 0.58)
+        100%
+    );
+}
+
+
+/* =========================================================
+   NO IMAGE
+========================================================= */
+
+.karya-no-image {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  padding: 25px;
+
+  background:
+    radial-gradient(
+      circle at 70% 20%,
+      rgba(255, 255, 255, 0.07),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #151515,
+      #070707
+    );
+}
+
+.karya-no-image span {
+  margin-bottom: 7px;
+
+  color: #5f5f5f;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.karya-no-image strong {
+  color: #d8d8d8;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* =========================================================
+   PLAY BUTTON
+========================================================= */
+
+.karya-play {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 3;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.72);
+
+  border-radius: 50%;
+
+  background:
+    rgba(0, 0, 0, 0.18);
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    scale(0.94);
+
+  opacity: 0.9;
+
+  transition:
+    transform
+      300ms
+      ease,
+    opacity
+      300ms
+      ease,
+    background
+      300ms
+      ease;
+}
+
+.karya-card:hover
+.karya-play {
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    scale(1.04);
+
+  opacity: 1;
+
+  background:
+    rgba(0, 0, 0, 0.35);
+}
+
+.karya-play-icon {
+  margin-left: 3px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   CATEGORY LABEL ON IMAGE
+========================================================= */
+
+.karya-card-label {
+  position: absolute;
+
+  left: 14px;
+  bottom: 13px;
+
+  z-index: 4;
+
+  padding:
+    6px
+    8px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.15);
+
+  background:
+    rgba(0, 0, 0, 0.48);
+
+  color: #d5d5d5;
+
+  font-size: 6px;
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+}
+
+
+/* =========================================================
+   CARD INFO
+========================================================= */
+
+.karya-card-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 14px;
+}
+
+.karya-card-main {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.karya-title-row {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.karya-title-row h2 {
+  max-width: 100%;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  color: #eeeeee;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: -0.005em;
+
+  line-height: 1.25;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  transition:
+    color
+    220ms
+    ease;
+}
+
+.karya-card:hover
+.karya-title-row h2 {
+  color: #ffffff;
+}
+
+.karya-artist {
+  margin-top: 6px;
+
+  color: #777777;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+
+  line-height: 1.3;
+
+  text-transform: uppercase;
+}
+
+.karya-album-name {
+  margin-top: 6px;
+
+  color: #999999;
+
+  font-size: 8px;
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   CARD META
+========================================================= */
+
+.karya-card-meta {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding-top: 2px;
+}
+
+.karya-card-meta span {
+  color: #555555;
+
+  font-size: 6px;
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+
+  text-transform: uppercase;
+}
+
+.karya-card-meta span
++ span::before {
+  content: "•";
+
+  margin-right: 7px;
+
+  color: #3d3d3d;
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.karya-card-description {
+  max-width: 92%;
+
+  margin:
+    10px
+    0
+    0;
+
+  display: -webkit-box;
+
+  overflow: hidden;
+
+  color: #606060;
+
+  font-size: 8px;
+  font-weight: 400;
+
+  line-height: 1.6;
+
+  -webkit-box-orient: vertical;
+
+  -webkit-line-clamp: 2;
+}
+
+
+/* =========================================================
+   CATEGORY SECTION SPACING
+========================================================= */
+
+.karya-category-section
++ .karya-category-section {
+  padding-top: 0;
+}
+
+
+/* =========================================================
+   YOUTUBE MODAL
+========================================================= */
+
+.karya-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.88
+    );
+
+  animation:
+    karyaModalIn
+    250ms
+    ease
+    both;
+}
+
+@keyframes karyaModalIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   MODAL INNER
+========================================================= */
+
+.karya-modal-inner {
+  position: relative;
+
+  width: min(
+    1100px,
+    100%
+  );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  background:
+    #080808;
+
+  box-shadow: none;
+
+  animation:
+    karyaModalPanelIn
+    350ms
+    cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    )
+    both;
+}
+
+@keyframes karyaModalPanelIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(
+        16px
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(
+        0
+      );
+  }
+
+}
+
+
+/* =========================================================
+   MODAL CLOSE
+========================================================= */
+
+.karya-modal-close {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  z-index: 10;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.15);
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background:
+    rgba(0, 0, 0, 0.65);
+
+  font-size: 22px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background
+      220ms
+      ease,
+    border-color
+      220ms
+      ease,
+    transform
+      220ms
+      ease;
+}
+
+.karya-modal-close:hover {
+  border-color:
+    rgba(255, 255, 255, 0.35);
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  transform:
+    rotate(90deg);
+}
+
+
+/* =========================================================
+   YOUTUBE PLAYER
+========================================================= */
+
+.karya-player {
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  background:
+    #000000;
+}
+
+.karya-player iframe {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   MODAL INFO
+========================================================= */
+
+.karya-modal-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  padding:
+    28px
+    30px
+    32px;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+}
+
+.karya-modal-details {
+  min-width: 0;
+}
+
+.karya-modal-category {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #777777;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.karya-modal-info h2 {
+  margin: 0;
+
+  color: #f4f4f4;
+
+  font-size:
+    clamp(
+      24px,
+      3vw,
+      38px
+    );
+
+  font-weight: 700;
+
+  letter-spacing: -0.04em;
+
+  line-height: 1;
+}
+
+.karya-modal-info p {
+  margin:
+    10px
+    0
+    0;
+
+  color: #777777;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MODAL DESCRIPTION
+========================================================= */
+
+.karya-modal-description {
+  max-width: 700px;
+
+  margin-top: 20px;
+
+  color: #929292;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   WATCH YOUTUBE
+========================================================= */
+
+.karya-youtube-link {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 16px;
+
+  padding:
+    13px
+    16px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.13);
+
+  color: #dcdcdc;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+
+  transition:
+    color
+      220ms
+      ease,
+    border-color
+      220ms
+      ease,
+    background
+      220ms
+      ease;
+}
+
+.karya-youtube-link:hover {
+  border-color:
+    rgba(255, 255, 255, 0.3);
+
+  color: #ffffff;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+}
+
+.karya-youtube-link span {
+  font-size: 15px;
+
+  line-height: 0.7;
+}
+
+
+
+/* =========================================================
+   GOLD CATEGORY BOXES
+   BLACK TEXT / GOLD BACKGROUND
+========================================================= */
+
+.karya-category-heading {
+  padding: 0;
+}
+
+.karya-category-heading h2 {
+  display: inline-block;
+
+  margin: 0;
+  padding: 12px 18px 10px;
+
+  color: #000000;
+
+  background:
+    linear-gradient(
+      135deg,
+      #B8860B 0%,
+      #D4AF37 48%,
+      #F0D878 100%
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.20);
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.18);
+
+  -webkit-text-fill-color: #000000;
+}
+
+.karya-category-heading h2:hover {
+  color: #000000;
+  -webkit-text-fill-color: #000000;
+}
+
+.karya-category-number {
+  color: #D4AF37;
+}
+
+.karya-category-count {
+  color: #D4AF37;
+}
+
+.karya-category-line {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(212, 175, 55, 0.65),
+      rgba(212, 175, 55, 0.08)
+    );
+}
+
+/* Keep card/category labels readable */
+.karya-card-label {
+  border-color: rgba(212, 175, 55, 0.45);
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .karya-header {
+    padding:
+      135px
+      45px
+      55px;
+  }
+
+  .karya-section {
+    padding:
+      60px
+      45px
+      100px;
+  }
+
+  .karya-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    column-gap: 20px;
+    row-gap: 50px;
+  }
+
+  .karya-category-section {
+    padding-bottom: 75px;
+
+    margin-bottom: 75px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .karya-header {
+    padding:
+      120px
+      24px
+      48px;
+  }
+
+  .karya-header-inner {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 35px;
+  }
+
+  .karya-heading h1 {
+    font-size:
+      clamp(
+        54px,
+        18vw,
+        100px
+      );
+  }
+
+  .karya-heading p {
+    margin-top: 25px;
+
+    font-size: 12px;
+  }
+
+  .karya-count {
+    padding-bottom: 0;
+  }
+
+  .karya-count span {
+    font-size: 38px;
+  }
+
+  .karya-section {
+    padding:
+      45px
+      24px
+      80px;
+  }
+
+  .karya-category-heading {
+    align-items: center;
+
+    gap: 20px;
+  }
+
+  .karya-category-title-wrap {
+    gap: 13px;
+  }
+
+  .karya-category-heading h2 {
+    font-size:
+      clamp(
+        22px,
+        6vw,
+        34px
+      );
+  }
+
+  .karya-category-number {
+    font-size: 8px;
+  }
+
+  .karya-category-count {
+    font-size: 7px;
+  }
+
+  .karya-category-line {
+    margin-bottom: 24px;
+  }
+
+  .karya-grid {
+    grid-template-columns: 1fr;
+
+    row-gap: 48px;
+  }
+
+  .karya-thumbnail {
+    aspect-ratio: 16 / 9;
+  }
+
+  .karya-card-info {
+    gap: 15px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 14px;
+  }
+
+  .karya-card-description {
+    max-width: 100%;
+  }
+
+  .karya-category-section {
+    padding-bottom: 65px;
+
+    margin-bottom: 65px;
+  }
+
+  .karya-modal {
+    align-items: center;
+
+    padding: 15px;
+  }
+
+  .karya-modal-info {
+    flex-direction: column;
+
+    gap: 25px;
+
+    padding:
+      24px
+      20px
+      25px;
+  }
+
+  .karya-youtube-link {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+  .lowzack-karya-page {
+    min-height: 100svh;
+  }
+
+  .karya-header {
+    padding:
+      105px
+      18px
+      40px;
+  }
+
+  .karya-eyebrow {
+    margin-bottom: 15px;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+  }
+
+  .karya-heading h1 {
+    font-size:
+      clamp(
+        48px,
+        19vw,
+        82px
+      );
+
+    letter-spacing: -0.07em;
+  }
+
+  .karya-heading p {
+    max-width: 430px;
+
+    margin-top: 22px;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+  }
+
+  .karya-count {
+    gap: 9px;
+  }
+
+  .karya-count span {
+    font-size: 34px;
+  }
+
+  .karya-count small {
+    font-size: 7px;
+  }
+
+  .karya-section {
+    padding:
+      38px
+      18px
+      70px;
+  }
+
+  .karya-category-section {
+    padding-bottom: 55px;
+
+    margin-bottom: 55px;
+  }
+
+  .karya-category-heading {
+    align-items: flex-end;
+
+    gap: 12px;
+
+    margin-bottom: 17px;
+  }
+
+  .karya-category-title-wrap {
+    align-items: baseline;
+
+    gap: 10px;
+  }
+
+  .karya-category-heading h2 {
+    font-size:
+      clamp(
+        20px,
+        7vw,
+        29px
+      );
+
+    letter-spacing: -0.05em;
+  }
+
+  .karya-category-number {
+    font-size: 7px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .karya-category-count {
+    font-size: 6px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .karya-category-line {
+    margin-bottom: 20px;
+  }
+
+  .karya-grid {
+    row-gap: 40px;
+  }
+
+  .karya-thumbnail {
+    aspect-ratio: 16 / 9;
+  }
+
+  .karya-card-label {
+    left: 12px;
+    bottom: 11px;
+
+    padding:
+      6px
+      8px;
+
+    font-size: 6px;
+
+    letter-spacing: 1.4px;
+  }
+
+  .karya-play {
+    width: 47px;
+    height: 47px;
+  }
+
+  .karya-play-icon {
+    font-size: 10px;
+  }
+
+  .karya-card-info {
+    padding-top: 13px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 13px;
+  }
+
+  .karya-artist {
+    margin-top: 5px;
+
+    font-size: 6px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .karya-card-meta {
+    gap: 5px;
+  }
+
+  .karya-card-meta span {
+    font-size: 5.5px;
+
+    letter-spacing: 0.9px;
+  }
+
+  .karya-card-meta span
+  + span::before {
+    margin-right: 5px;
+  }
+
+  .karya-card-description {
+    margin-top: 8px;
+
+    font-size: 8px;
+
+    line-height: 1.6;
+  }
+
+  .karya-category-empty {
+    min-height: 130px;
+
+    padding:
+      25px
+      0;
+  }
+
+  .karya-category-empty span {
+    font-size: 7px;
+
+    letter-spacing: 2px;
+  }
+
+  .karya-category-empty small {
+    font-size: 9px;
+  }
+
+  .karya-modal {
+    padding: 10px;
+  }
+
+  .karya-modal-inner {
+    width: 100%;
+  }
+
+  .karya-modal-close {
+    top: 8px;
+    right: 8px;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 19px;
+  }
+
+  .karya-modal-info {
+    padding:
+      20px
+      17px
+      22px;
+  }
+
+  .karya-modal-category {
+    margin-bottom: 8px;
+
+    font-size: 7px;
+
+    letter-spacing: 1.6px;
+  }
+
+  .karya-modal-info h2 {
+    font-size: 25px;
+  }
+
+  .karya-modal-info p {
+    font-size: 7px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .karya-modal-description {
+    margin-top: 16px;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .karya-header {
+    padding:
+      100px
+      15px
+      35px;
+  }
+
+  .karya-section {
+    padding:
+      32px
+      15px
+      60px;
+  }
+
+  .karya-heading h1 {
+    font-size: 45px;
+  }
+
+  .karya-heading p {
+    font-size: 10px;
+  }
+
+  .karya-category-heading h2 {
+    font-size: 19px;
+  }
+
+  .karya-category-number {
+    display: none;
+  }
+
+  .karya-category-count {
+    font-size: 5.5px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 12px;
+  }
+
+  .karya-card-meta {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.karya-thumbnail:focus-visible,
+.karya-modal-close:focus-visible,
+.karya-youtube-link:focus-visible {
+  outline:
+    1px solid
+    rgba(255, 255, 255, 0.8);
+
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .karya-loader,
+  .karya-modal,
+  .karya-modal-inner {
+    animation: none;
+  }
+
+  .karya-thumbnail img,
+  .karya-play,
+  .karya-modal-close,
+  .karya-youtube-link {
+    transition: none;
+  }
+
+}
+
+@media (max-width: 760px) {
+  .karya-heading h1 {
+    padding: 11px 16px 9px;
+  }
+
+  .karya-category-heading h2 {
+    padding: 9px 13px 8px;
+  }
+}
+
+@media (max-width: 560px) {
+  .karya-heading h1 {
+    padding: 9px 13px 8px;
+  }
+
+  .karya-category-heading h2 {
+    padding: 8px 11px 7px;
+  }
+}
+
+
+/* =========================================================
+   FINAL GOLD TITLE OVERRIDE
+   BLACK TEXT / GOLD BOX
+========================================================= */
+
+.karya-heading h1 {
+  display: inline-block;
+
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #B8860B 0%,
+      #D4AF37 48%,
+      #F0D878 100%
+    ) !important;
+
+  padding: 14px 22px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.20);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+.karya-heading h1:hover {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+
+/* =========================================================
+   FINAL CAPSULE / PILL GOLD BOX
+   BLACK TEXT / GOLD BACKGROUND
+========================================================= */
+
+.karya-heading h1 {
+  border-radius: 9999px !important;
+
+  padding:
+    14px
+    28px
+    12px !important;
+}
+
+.karya-category-heading h2 {
+  border-radius: 9999px !important;
+
+  padding:
+    12px
+    22px
+    10px !important;
+}
+
+/* Keep the gold capsule clean on hover */
+.karya-heading h1:hover,
+.karya-category-heading h2:hover {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Tablet */
+@media (max-width: 760px) {
+
+  .karya-heading h1 {
+    border-radius: 9999px !important;
+
+    padding:
+      11px
+      21px
+      9px !important;
+  }
+
+  .karya-category-heading h2 {
+    border-radius: 9999px !important;
+
+    padding:
+      9px
+      17px
+      8px !important;
+  }
+
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+
+  .karya-heading h1 {
+    border-radius: 9999px !important;
+
+    padding:
+      9px
+      17px
+      8px !important;
+  }
+
+  .karya-category-heading h2 {
+    border-radius: 9999px !important;
+
+    padding:
+      8px
+      14px
+      7px !important;
+  }
+
+}
+
+
+/* =========================================================
+   FINAL RELEASES TITLE
+   NO BOX / GOLD TEXT ONLY
+========================================================= */
+
+.karya-heading h1 {
+  display: inline-block;
+
+  padding: 0 !important;
+
+  color: #D4AF37 !important;
+  -webkit-text-fill-color: #D4AF37 !important;
+
+  background: transparent !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  box-shadow: none !important;
+}
+
+.karya-heading h1:hover {
+  color: #E7C96A !important;
+  -webkit-text-fill-color: #E7C96A !important;
+
+  background: transparent !important;
+
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/*
+ * Category headings remain GOLD CAPSULES:
+ *
+ * MUSIC
+ * MUSIC VIDEO
+ * LYRIC VIDEO
+ * LIVE PERFORMANCE
+ */
+
+/* =========================================================
+   FINAL CATEGORY NUMBERS
+   WHITE TEXT
+   ========================================================= */
+
+.karya-category-number {
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   FINAL MOBILE REFINEMENT
+   PREMIUM / CLEAN / BALANCED
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   TABLET / LARGE MOBILE — <= 760px
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+
+  .karya-header {
+    padding:
+      112px
+      22px
+      46px;
+  }
+
+  .karya-header-inner {
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .karya-heading {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .karya-eyebrow {
+    margin-bottom: 14px;
+    font-size: 8px;
+    letter-spacing: 3px;
+  }
+
+  .karya-heading h1 {
+    display: inline-block;
+    max-width: 100%;
+    font-size: clamp(52px, 16vw, 92px);
+    line-height: 0.86;
+    letter-spacing: -0.065em;
+    white-space: nowrap;
+  }
+
+  .karya-heading p {
+    width: min(100%, 520px);
+    margin-top: 22px;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.12px;
+  }
+
+  .karya-count {
+    width: 100%;
+    align-items: baseline;
+    gap: 10px;
+    padding-bottom: 0;
+  }
+
+  .karya-count span {
+    font-size: 38px;
+  }
+
+  .karya-count small {
+    font-size: 7px;
+    letter-spacing: 1.8px;
+  }
+
+  .karya-section {
+    padding:
+      42px
+      22px
+      76px;
+  }
+
+  .karya-releases-container {
+    width: 100%;
+  }
+
+  .karya-category-section {
+    padding-bottom: 62px;
+    margin-bottom: 62px;
+  }
+
+  .karya-category-heading {
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .karya-category-title-wrap {
+    min-width: 0;
+    gap: 11px;
+  }
+
+  .karya-category-number {
+    flex: 0 0 auto;
+    color: #ffffff !important;
+    font-size: 8px;
+    letter-spacing: 1.6px;
+  }
+
+  .karya-category-heading h2 {
+    max-width: 100%;
+    font-size: clamp(21px, 5.8vw, 32px);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    padding: 9px 17px 8px !important;
+    border-radius: 9999px !important;
+    white-space: nowrap;
+  }
+
+  .karya-category-count {
+    flex: 0 0 auto;
+    font-size: 7px;
+    letter-spacing: 1.5px;
+  }
+
+  .karya-category-line {
+    margin-bottom: 24px;
+  }
+
+  .karya-grid {
+    grid-template-columns: 1fr;
+    row-gap: 42px;
+  }
+
+  .karya-thumbnail {
+    aspect-ratio: 16 / 9;
+  }
+
+  .karya-card-info {
+    gap: 14px;
+    padding-top: 13px;
+  }
+
+  .karya-card-main {
+    min-width: 0;
+  }
+
+  .karya-title-row {
+    gap: 8px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  .karya-artist {
+    margin-top: 5px;
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+
+  .karya-album-name {
+    margin-top: 5px;
+    font-size: 8px;
+  }
+
+  .karya-card-meta {
+    gap: 5px;
+    padding-top: 2px;
+  }
+
+  .karya-card-meta span {
+    font-size: 5.5px;
+    letter-spacing: 0.9px;
+  }
+
+  .karya-card-meta span + span::before {
+    margin-right: 5px;
+  }
+
+  .karya-card-description {
+    max-width: 100%;
+    margin-top: 8px;
+    font-size: 8px;
+    line-height: 1.6;
+  }
+
+  .karya-category-empty {
+    min-height: 140px;
+    padding: 28px 0;
+  }
+
+  .karya-modal {
+    align-items: center;
+    padding: 14px;
+  }
+
+  .karya-modal-inner {
+    width: 100%;
+    max-height: calc(100svh - 28px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .karya-modal-close {
+    top: 9px;
+    right: 9px;
+    width: 35px;
+    height: 35px;
+    font-size: 19px;
+  }
+
+  .karya-modal-info {
+    flex-direction: column;
+    gap: 22px;
+    padding:
+      22px
+      18px
+      24px;
+  }
+
+  .karya-modal-info h2 {
+    font-size: clamp(23px, 6vw, 31px);
+    line-height: 1.05;
+  }
+
+  .karya-modal-description {
+    margin-top: 15px;
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .karya-youtube-link {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE — <= 560px
+   --------------------------------------------------------- */
+
+@media (max-width: 560px) {
+
+  .lowzack-karya-page {
+    min-height: 100svh;
+  }
+
+  .karya-header {
+    padding:
+      96px
+      17px
+      38px;
+  }
+
+  .karya-header-inner {
+    gap: 25px;
+  }
+
+  .karya-eyebrow {
+    margin-bottom: 13px;
+    font-size: 7px;
+    letter-spacing: 2.8px;
+  }
+
+  .karya-heading h1 {
+    font-size: clamp(44px, 17.5vw, 76px);
+    line-height: 0.87;
+    letter-spacing: -0.07em;
+    white-space: nowrap;
+  }
+
+  .karya-heading p {
+    max-width: 100%;
+    margin-top: 19px;
+    font-size: 10.5px;
+    line-height: 1.7;
+    letter-spacing: 0.05px;
+  }
+
+  .karya-count {
+    gap: 8px;
+  }
+
+  .karya-count span {
+    font-size: 31px;
+  }
+
+  .karya-count small {
+    font-size: 6.5px;
+    letter-spacing: 1.6px;
+  }
+
+  .karya-section {
+    padding:
+      34px
+      17px
+      62px;
+  }
+
+  .karya-category-section {
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+  }
+
+  .karya-category-heading {
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 15px;
+  }
+
+  .karya-category-title-wrap {
+    gap: 8px;
+  }
+
+  .karya-category-number {
+    font-size: 6.5px;
+    letter-spacing: 1.3px;
+    color: #ffffff !important;
+  }
+
+  .karya-category-heading h2 {
+    font-size: clamp(18px, 6.7vw, 27px);
+    letter-spacing: -0.05em;
+    padding:
+      8px
+      13px
+      7px !important;
+    border-radius: 9999px !important;
+  }
+
+  .karya-category-count {
+    font-size: 5.5px;
+    letter-spacing: 1.2px;
+  }
+
+  .karya-category-line {
+    margin-bottom: 19px;
+  }
+
+  .karya-grid {
+    row-gap: 34px;
+  }
+
+  .karya-card-info {
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 11px;
+  }
+
+  .karya-title-row {
+    gap: 7px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 12.5px;
+    line-height: 1.25;
+  }
+
+  .karya-artist {
+    margin-top: 4px;
+    font-size: 5.5px;
+    letter-spacing: 1.3px;
+  }
+
+  .karya-album-name {
+    margin-top: 4px;
+    font-size: 7px;
+  }
+
+  .karya-card-meta {
+    gap: 4px;
+  }
+
+  .karya-card-meta span {
+    font-size: 5px;
+    letter-spacing: 0.75px;
+  }
+
+  .karya-card-meta span + span::before {
+    margin-right: 4px;
+  }
+
+  .karya-card-description {
+    margin-top: 7px;
+    font-size: 7.5px;
+    line-height: 1.55;
+  }
+
+  .karya-card-label {
+    left: 10px;
+    bottom: 9px;
+    padding:
+      5px
+      7px;
+    font-size: 5.5px;
+    letter-spacing: 1.2px;
+  }
+
+  .karya-play {
+    width: 44px;
+    height: 44px;
+  }
+
+  .karya-play-icon {
+    font-size: 9px;
+  }
+
+  .karya-category-empty {
+    min-height: 115px;
+    padding: 22px 0;
+  }
+
+  .karya-category-empty span {
+    font-size: 6.5px;
+    letter-spacing: 1.8px;
+  }
+
+  .karya-category-empty small {
+    font-size: 8px;
+  }
+
+  .karya-modal {
+    padding: 8px;
+  }
+
+  .karya-modal-inner {
+    max-height: calc(100svh - 16px);
+  }
+
+  .karya-modal-close {
+    top: 7px;
+    right: 7px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .karya-modal-info {
+    gap: 19px;
+    padding:
+      18px
+      15px
+      20px;
+  }
+
+  .karya-modal-category {
+    margin-bottom: 7px;
+    font-size: 6.5px;
+    letter-spacing: 1.4px;
+  }
+
+  .karya-modal-info h2 {
+    font-size: 22px;
+    line-height: 1.05;
+  }
+
+  .karya-modal-info p {
+    margin-top: 8px;
+    font-size: 6.5px;
+    letter-spacing: 1.3px;
+  }
+
+  .karya-modal-description {
+    margin-top: 14px;
+    font-size: 9.5px;
+    line-height: 1.65;
+  }
+
+  .karya-youtube-link {
+    min-height: 42px;
+    padding:
+      11px
+      13px;
+    gap: 10px;
+    font-size: 7px;
+    letter-spacing: 1.5px;
+  }
+
+  .karya-youtube-link span {
+    font-size: 13px;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   SMALL MOBILE — <= 380px
+   --------------------------------------------------------- */
+
+@media (max-width: 380px) {
+
+  .karya-header {
+    padding:
+      88px
+      14px
+      32px;
+  }
+
+  .karya-header-inner {
+    gap: 22px;
+  }
+
+  .karya-eyebrow {
+    margin-bottom: 11px;
+    font-size: 6.5px;
+    letter-spacing: 2.4px;
+  }
+
+  .karya-heading h1 {
+    font-size: clamp(39px, 17vw, 58px);
+    letter-spacing: -0.075em;
+  }
+
+  .karya-heading p {
+    margin-top: 17px;
+    font-size: 9.5px;
+    line-height: 1.65;
+  }
+
+  .karya-count {
+    gap: 7px;
+  }
+
+  .karya-count span {
+    font-size: 27px;
+  }
+
+  .karya-count small {
+    font-size: 5.5px;
+    letter-spacing: 1.3px;
+  }
+
+  .karya-section {
+    padding:
+      29px
+      14px
+      54px;
+  }
+
+  .karya-category-section {
+    padding-bottom: 43px;
+    margin-bottom: 43px;
+  }
+
+  .karya-category-heading {
+    gap: 7px;
+    margin-bottom: 13px;
+  }
+
+  .karya-category-title-wrap {
+    gap: 7px;
+  }
+
+  .karya-category-number {
+    display: inline-block !important;
+    font-size: 6px;
+    letter-spacing: 1.1px;
+    color: #ffffff !important;
+  }
+
+  .karya-category-heading h2 {
+    max-width: calc(100vw - 85px);
+    overflow: hidden;
+    font-size: 17px;
+    letter-spacing: -0.045em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding:
+      7px
+      11px
+      6px !important;
+  }
+
+  .karya-category-count {
+    font-size: 5px;
+    letter-spacing: 1px;
+  }
+
+  .karya-category-line {
+    margin-bottom: 17px;
+  }
+
+  .karya-grid {
+    row-gap: 29px;
+  }
+
+  .karya-card-info {
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 11.5px;
+  }
+
+  .karya-artist {
+    margin-top: 4px;
+    font-size: 5px;
+    letter-spacing: 1.1px;
+  }
+
+  .karya-album-name {
+    font-size: 6.5px;
+  }
+
+  .karya-card-meta {
+    display: none;
+  }
+
+  .karya-card-description {
+    margin-top: 6px;
+    font-size: 7px;
+    line-height: 1.5;
+  }
+
+  .karya-card-label {
+    left: 8px;
+    bottom: 8px;
+    padding:
+      4px
+      6px;
+    font-size: 5px;
+    letter-spacing: 1px;
+  }
+
+  .karya-play {
+    width: 40px;
+    height: 40px;
+  }
+
+  .karya-play-icon {
+    font-size: 8px;
+  }
+
+  .karya-category-empty {
+    min-height: 100px;
+    padding: 18px 0;
+  }
+
+  .karya-category-empty span {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+
+  .karya-category-empty small {
+    font-size: 7.5px;
+  }
+
+  .karya-modal {
+    padding: 6px;
+  }
+
+  .karya-modal-inner {
+    max-height: calc(100svh - 12px);
+  }
+
+  .karya-modal-close {
+    top: 6px;
+    right: 6px;
+    width: 29px;
+    height: 29px;
+    font-size: 16px;
+  }
+
+  .karya-modal-info {
+    gap: 16px;
+    padding:
+      16px
+      13px
+      18px;
+  }
+
+  .karya-modal-category {
+    margin-bottom: 6px;
+    font-size: 6px;
+    letter-spacing: 1.2px;
+  }
+
+  .karya-modal-info h2 {
+    font-size: 19px;
+  }
+
+  .karya-modal-info p {
+    margin-top: 7px;
+    font-size: 6px;
+    letter-spacing: 1.1px;
+  }
+
+  .karya-modal-description {
+    margin-top: 12px;
+    font-size: 8.5px;
+    line-height: 1.6;
+  }
+
+  .karya-youtube-link {
+    min-height: 39px;
+    padding:
+      10px
+      11px;
+    font-size: 6.5px;
+    letter-spacing: 1.3px;
+  }
+
+  .karya-youtube-link span {
+    font-size: 12px;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   ULTRA SMALL — <= 330px
+   --------------------------------------------------------- */
+
+@media (max-width: 330px) {
+
+  .karya-header {
+    padding:
+      82px
+      12px
+      28px;
+  }
+
+  .karya-heading h1 {
+    font-size: 36px;
+  }
+
+  .karya-heading p {
+    font-size: 9px;
+  }
+
+  .karya-section {
+    padding:
+      26px
+      12px
+      48px;
+  }
+
+  .karya-category-heading {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .karya-category-title-wrap {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .karya-category-heading h2 {
+    max-width: calc(100vw - 76px);
+    font-size: 15.5px;
+    padding:
+      6px
+      10px
+      5px !important;
+  }
+
+  .karya-category-count {
+    width: 100%;
+    margin-left: 18px;
+    margin-top: 2px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 11px;
+  }
+
+  .karya-card-description {
+    font-size: 6.5px;
+  }
+}
+
+
+/* =========================================================
+   FINAL CATEGORY SIZE REFINEMENT
+   SMALLER TYPOGRAPHY + SMALLER GOLD CAPSULE
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   DESKTOP
+   --------------------------------------------------------- */
+
+.karya-category-heading h2 {
+  font-size: clamp(21px, 2.35vw, 34px) !important;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+
+  padding:
+    9px
+    15px
+    8px !important;
+
+  border-radius: 9999px !important;
+}
+
+
+/* ---------------------------------------------------------
+   TABLET — <= 760px
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+
+  .karya-category-heading {
+    gap: 11px;
+    margin-bottom: 15px;
+  }
+
+  .karya-category-title-wrap {
+    gap: 8px;
+  }
+
+  .karya-category-heading h2 {
+    font-size: clamp(17px, 4.8vw, 25px) !important;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+
+    padding:
+      7px
+      12px
+      6px !important;
+
+    border-radius: 9999px !important;
+  }
+
+  .karya-category-number {
+    font-size: 7px !important;
+    letter-spacing: 1.3px;
+    color: #ffffff !important;
+  }
+
+  .karya-category-count {
+    font-size: 6px !important;
+    letter-spacing: 1.2px;
+  }
+
+  .karya-category-line {
+    margin-bottom: 20px;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE — <= 560px
+   --------------------------------------------------------- */
+
+@media (max-width: 560px) {
+
+  .karya-category-heading {
+    gap: 7px;
+    margin-bottom: 13px;
+  }
+
+  .karya-category-title-wrap {
+    gap: 6px;
+  }
+
+  .karya-category-heading h2 {
+    font-size: clamp(15px, 5.5vw, 21px) !important;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+
+    padding:
+      6px
+      10px
+      5px !important;
+
+    border-radius: 9999px !important;
+  }
+
+  .karya-category-number {
+    font-size: 6px !important;
+    letter-spacing: 1.1px;
+    color: #ffffff !important;
+  }
+
+  .karya-category-count {
+    font-size: 5px !important;
+    letter-spacing: 1px;
+  }
+
+  .karya-category-line {
+    margin-bottom: 17px;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   SMALL MOBILE — <= 380px
+   --------------------------------------------------------- */
+
+@media (max-width: 380px) {
+
+  .karya-category-heading {
+    gap: 6px;
+    margin-bottom: 11px;
+  }
+
+  .karya-category-title-wrap {
+    gap: 5px;
+  }
+
+  .karya-category-heading h2 {
+    max-width: calc(100vw - 72px);
+
+    font-size: 14px !important;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+
+    padding:
+      5px
+      9px
+      4px !important;
+
+    border-radius: 9999px !important;
+  }
+
+  .karya-category-number {
+    display: inline-block !important;
+    font-size: 5.5px !important;
+    letter-spacing: 1px;
+    color: #ffffff !important;
+  }
+
+  .karya-category-count {
+    font-size: 4.8px !important;
+    letter-spacing: 0.9px;
+  }
+
+  .karya-category-line {
+    margin-bottom: 15px;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   ULTRA SMALL — <= 330px
+   --------------------------------------------------------- */
+
+@media (max-width: 330px) {
+
+  .karya-category-heading {
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .karya-category-title-wrap {
+    gap: 5px;
+  }
+
+  .karya-category-heading h2 {
+    max-width: calc(100vw - 66px);
+
+    font-size: 13px !important;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+
+    padding:
+      4px
+      8px
+      3px !important;
+
+    border-radius: 9999px !important;
+  }
+
+  .karya-category-number {
+    font-size: 5px !important;
+    letter-spacing: 0.8px;
+    color: #ffffff !important;
+  }
+
+  .karya-category-count {
+    font-size: 4.5px !important;
+    letter-spacing: 0.8px;
+  }
+
+  .karya-category-line {
+    margin-bottom: 14px;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   KEEP CATEGORY NUMBERS WHITE
+   --------------------------------------------------------- */
+
+.karya-category-number {
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   LOWZACK RELEASES
+   YOUTUBE VIEWS + SORT FILTER
+========================================================= */
+
+.karya-filter-section {
+  width: 100%;
+  padding: 0 0 34px;
+}
+
+.karya-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 18px 0;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+}
+
+.karya-filter-label {
+  flex: 0 0 auto;
+
+  color: #666666;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.2em;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+.karya-filter-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+.karya-filter-buttons button {
+  appearance: none;
+
+  padding:
+    10px
+    14px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.10);
+
+  border-radius: 0;
+
+  color: #777777;
+
+  background: transparent;
+
+  font: inherit;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color
+      180ms
+      ease,
+    border-color
+      180ms
+      ease,
+    background
+      180ms
+      ease;
+}
+
+.karya-filter-buttons button:hover {
+  color: #ffffff;
+
+  border-color:
+    rgba(200, 169, 107, 0.45);
+
+  background:
+    rgba(200, 169, 107, 0.045);
+}
+
+.karya-filter-buttons button.active {
+  color: #c8a96b;
+
+  border-color:
+    rgba(200, 169, 107, 0.58);
+
+  background:
+    rgba(200, 169, 107, 0.08);
+}
+
+.karya-filter-status {
+  flex: 0 0 auto;
+
+  color: #4ade80;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   YOUTUBE VIEWS
+========================================================= */
+
+.karya-views {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #4ade80;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FILTER RESPONSIVE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .karya-filter-section {
+    padding-bottom: 28px;
+  }
+
+  .karya-filter-bar {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    padding:
+      16px
+      0;
+  }
+
+  .karya-filter-buttons {
+    width: 100%;
+
+    justify-content: flex-start;
+  }
+
+  .karya-filter-buttons button {
+    padding:
+      9px
+      11px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.11em;
+  }
+
+  .karya-filter-status {
+    font-size: 7px;
+  }
+
+  .karya-views {
+    margin-top: 6px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.10em;
+  }
+
+}
+
+
+@media (max-width: 560px) {
+
+  .karya-filter-section {
+    padding-bottom: 24px;
+  }
+
+  .karya-filter-bar {
+    gap: 12px;
+  }
+
+  .karya-filter-label {
+    font-size: 7px;
+
+    letter-spacing: 0.17em;
+  }
+
+  .karya-filter-buttons {
+    gap: 6px;
+  }
+
+  .karya-filter-buttons button {
+    padding:
+      8px
+      9px;
+
+    font-size: 6px;
+
+    letter-spacing: 0.09em;
+  }
+
+  .karya-filter-status {
+    font-size: 6px;
+
+    letter-spacing: 0.10em;
+  }
+
+  .karya-views {
+    margin-top: 5px;
+
+    font-size: 6px;
+
+    letter-spacing: 0.09em;
+  }
+
+}
+
+/* =========================================================
+   HOME → RELEASES
+   CLEAN SELECTED RELEASE CUE
+   Pulse is handled by Releases.jsx via Web Animations API.
+   No outer frame, no negative inset, no shadow, no card scaling.
+========================================================= */
+
+.karya-card.karya-card-highlighted,
+.karya-card[data-release-highlighted="true"] {
+  position: relative;
+  z-index: 20;
+  scroll-margin-top: 140px;
+}
+
+/*
+ * Keep the existing thumbnail boundary inside its own box.
+ * The image pulse is clipped by .karya-thumbnail { overflow: hidden; }.
+ */
+.karya-card.karya-card-highlighted .karya-thumbnail,
+.karya-card[data-release-highlighted="true"] .karya-thumbnail {
+  border-color: #D4AF37;
+}
+
+@media (max-width: 760px) {
+  .karya-card.karya-card-highlighted,
+  .karya-card[data-release-highlighted="true"] {
+    scroll-margin-top: 110px;
+  }
+}
+
+/* =========================================================
+   LOWZACK RELEASES — FINAL CATEGORY CAROUSEL
+   ---------------------------------------------------------
+   DESKTOP:
+   - 3 CARD KE KANAN
+   - 2 CARD KE BAWAH
+   - 6 RELEASES PER PAGE
+
+   TABLET:
+   - 2 CARD KE KANAN
+   - 2 CARD KE BAWAH
+   - 4 RELEASES PER PAGE
+
+   MOBILE:
+   - 2 CARD KE KANAN
+   - 2 CARD KE BAWAH
+   - 4 RELEASES PER PAGE
+
+   SMALL MOBILE:
+   - 2 CARD KE KANAN
+   - 2 CARD KE BAWAH
+   - 4 RELEASES PER PAGE
+
+   Jika jumlah release melebihi kapasitas halaman,
+   arrow akan muncul untuk slide ke page berikutnya.
+
+   CSS ini disinkronkan dengan:
+   - .karya-category-carousel
+   - .karya-category-slide-arrow
+   - .karya-category-arrows
+   - .karya-category-arrow
+   - .karya-category-page-status
+========================================================= */
+
+
+/* =========================================================
+   CATEGORY CAROUSEL BASE
+========================================================= */
+
+.karya-category-carousel {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+.karya-category-carousel .karya-grid {
+  width: 100%;
+}
+
+
+/* =========================================================
+   CATEGORY TOP PAGE CONTROLS
+========================================================= */
+
+.karya-category-heading-right {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.karya-category-arrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+}
+
+.karya-category-arrow {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 50%;
+
+  background: rgba(8, 8, 8, 0.92);
+  color: #ffffff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease,
+    opacity 220ms ease;
+}
+
+.karya-category-arrow:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #050505;
+
+  transform: scale(1.06);
+}
+
+.karya-category-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.karya-category-page-status {
+  min-width: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777777;
+
+  font-size: 7px;
+  font-weight: 900;
+
+  letter-spacing: 1.8px;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+.karya-category-page-status > span {
+  margin: 0 5px;
+  color: #3d3d3d;
+}
+
+
+/* =========================================================
+   SIDE SLIDE ARROWS
+   Desktop
+========================================================= */
+
+.karya-category-slide-arrow {
+  position: absolute;
+
+  top: 50%;
+  z-index: 20;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(212, 175, 55, 0.72);
+  border-radius: 50%;
+
+  background: rgba(5, 5, 5, 0.96);
+  color: #ffffff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 29px;
+  font-weight: 300;
+  line-height: 1;
+
+  transform: translateY(-50%);
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 22px rgba(0, 0, 0, 0.45);
+
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease,
+    opacity 220ms ease;
+}
+
+.karya-category-slide-arrow:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #050505;
+
+  transform:
+    translateY(-50%)
+    scale(1.06);
+}
+
+.karya-category-slide-arrow:disabled {
+  opacity: 0.22;
+  cursor: default;
+}
+
+.karya-category-slide-arrow-prev {
+  left: -21px;
+}
+
+.karya-category-slide-arrow-next {
+  right: -21px;
+}
+
+
+/* =========================================================
+   DESKTOP — 1101px AND ABOVE
+   3 × 2
+========================================================= */
+
+@media (min-width: 1101px) {
+
+  .karya-grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      ) !important;
+
+    column-gap: 18px !important;
+    row-gap: 42px !important;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET — 1100px DOWN TO 761px
+   2 × 2
+   4 RELEASES PER PAGE
+========================================================= */
+
+@media (max-width: 1100px) and (min-width: 761px) {
+
+  .karya-section {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .karya-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      ) !important;
+
+    column-gap: 18px !important;
+    row-gap: 34px !important;
+  }
+
+  .karya-category-carousel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .karya-category-slide-arrow {
+    width: 38px;
+    height: 38px;
+
+    font-size: 26px;
+  }
+
+  .karya-category-slide-arrow-prev {
+    left: -19px;
+  }
+
+  .karya-category-slide-arrow-next {
+    right: -19px;
+  }
+
+  .karya-category-arrow {
+    width: 34px;
+    height: 34px;
+
+    font-size: 23px;
+  }
+
+  .karya-category-page-status {
+    font-size: 7px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE — 760px DOWN TO 561px
+   2 × 2
+   4 RELEASES PER PAGE
+========================================================= */
+
+@media (max-width: 760px) and (min-width: 561px) {
+
+  .karya-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .karya-category-heading {
+    gap: 14px;
+  }
+
+  .karya-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      ) !important;
+
+    column-gap: 14px !important;
+    row-gap: 30px !important;
+  }
+
+  .karya-category-carousel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .karya-category-slide-arrow {
+    width: 35px;
+    height: 35px;
+
+    font-size: 24px;
+  }
+
+  .karya-category-slide-arrow-prev {
+    left: -17px;
+  }
+
+  .karya-category-slide-arrow-next {
+    right: -17px;
+  }
+
+  .karya-category-arrow {
+    width: 32px;
+    height: 32px;
+
+    font-size: 21px;
+  }
+
+  .karya-category-page-status {
+    min-width: 38px;
+    font-size: 6.5px;
+    letter-spacing: 1.5px;
+  }
+
+  .karya-thumbnail {
+    aspect-ratio: 16 / 9;
+  }
+
+  .karya-card-info {
+    gap: 9px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 11px;
+  }
+
+  .karya-artist {
+    font-size: 5.5px;
+  }
+
+  .karya-album-name {
+    font-size: 7px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE — 560px DOWN TO 381px
+   2 × 2
+   4 RELEASES PER PAGE
+========================================================= */
+
+@media (max-width: 560px) and (min-width: 381px) {
+
+  .karya-section {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .karya-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      ) !important;
+
+    column-gap: 10px !important;
+    row-gap: 25px !important;
+  }
+
+  .karya-category-carousel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .karya-category-slide-arrow {
+    width: 32px;
+    height: 32px;
+
+    font-size: 22px;
+
+    background: rgba(5, 5, 5, 0.98);
+  }
+
+  .karya-category-slide-arrow-prev {
+    left: -15px;
+  }
+
+  .karya-category-slide-arrow-next {
+    right: -15px;
+  }
+
+  .karya-category-arrow {
+    width: 30px;
+    height: 30px;
+
+    font-size: 20px;
+  }
+
+  .karya-category-page-status {
+    min-width: 35px;
+
+    font-size: 6px;
+    letter-spacing: 1.3px;
+  }
+
+  .karya-category-page-status > span {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  .karya-thumbnail {
+    aspect-ratio: 16 / 9;
+  }
+
+  .karya-card-info {
+    gap: 7px;
+    padding-top: 9px;
+  }
+
+  .karya-title-row {
+    gap: 5px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .karya-artist {
+    margin-top: 4px;
+    font-size: 5px;
+    letter-spacing: 1.1px;
+  }
+
+  .karya-album-name {
+    margin-top: 4px;
+    font-size: 6.5px;
+  }
+
+  .karya-card-meta {
+    display: none;
+  }
+
+  .karya-card-description {
+    margin-top: 6px;
+    font-size: 7px;
+    line-height: 1.5;
+  }
+
+  .karya-card-label {
+    left: 8px;
+    bottom: 7px;
+
+    padding: 4px 6px;
+
+    font-size: 5px;
+    letter-spacing: 1px;
+  }
+
+  .karya-play {
+    width: 39px;
+    height: 39px;
+  }
+
+  .karya-play-icon {
+    font-size: 8px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE — 380px AND BELOW
+   2 × 2
+   4 RELEASES PER PAGE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .karya-section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .karya-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      ) !important;
+
+    column-gap: 8px !important;
+    row-gap: 22px !important;
+  }
+
+  .karya-category-heading {
+    gap: 8px;
+  }
+
+  .karya-category-title-wrap {
+    gap: 6px;
+  }
+
+  .karya-category-heading h2 {
+    max-width: calc(100vw - 95px);
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+  .karya-category-carousel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .karya-category-slide-arrow {
+    width: 29px;
+    height: 29px;
+
+    font-size: 20px;
+  }
+
+  .karya-category-slide-arrow-prev {
+    left: -13px;
+  }
+
+  .karya-category-slide-arrow-next {
+    right: -13px;
+  }
+
+  .karya-category-arrow {
+    width: 28px;
+    height: 28px;
+
+    font-size: 18px;
+  }
+
+  .karya-category-page-status {
+    min-width: 32px;
+
+    font-size: 5.5px;
+    letter-spacing: 1.1px;
+  }
+
+  .karya-category-page-status > span {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .karya-thumbnail {
+    aspect-ratio: 16 / 9;
+  }
+
+  .karya-card-info {
+    gap: 5px;
+    padding-top: 8px;
+  }
+
+  .karya-title-row {
+    gap: 4px;
+  }
+
+  .karya-title-row h2 {
+    font-size: 9px;
+    line-height: 1.18;
+  }
+
+  .karya-artist {
+    margin-top: 3px;
+
+    font-size: 4.6px;
+    letter-spacing: 0.9px;
+  }
+
+  .karya-album-name {
+    margin-top: 3px;
+    font-size: 6px;
+  }
+
+  .karya-card-meta {
+    display: none;
+  }
+
+  .karya-card-description {
+    margin-top: 5px;
+
+    font-size: 6.5px;
+    line-height: 1.45;
+  }
+
+  .karya-card-label {
+    left: 7px;
+    bottom: 6px;
+
+    padding: 4px 5px;
+
+    font-size: 4.5px;
+    letter-spacing: 0.8px;
+  }
+
+  .karya-play {
+    width: 35px;
+    height: 35px;
+  }
+
+  .karya-play-icon {
+    font-size: 7px;
+  }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   Keep arrows easy to tap.
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .karya-category-slide-arrow,
+  .karya-category-arrow {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .karya-category-slide-arrow:active:not(:disabled),
+  .karya-category-arrow:active:not(:disabled) {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #050505;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION — CAROUSEL CONTROLS
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .karya-category-slide-arrow,
+  .karya-category-arrow {
+    transition: none;
+  }
+
+}
+
+
+/* =========================================================
+   FINAL SAFETY OVERRIDES
+   Prevent older responsive rules from reverting the grid
+   to 1 column on mobile.
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .karya-category-carousel .karya-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      ) !important;
+  }
+
+}
+
+/* =========================================================
+   FINAL RELEASES TITLE — WHITE
+   ONLY COLOR CHANGED
+========================================================= */
+
+.karya-heading h1 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.karya-heading h1:hover {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* =========================================================
+   FINAL TOTAL RELEASES POSITION
+   NUMBER ABOVE LABEL
+   ONLY POSITION / ALIGNMENT CHANGED
+========================================================= */
+
+.karya-count {
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+
+.karya-count span {
+  display: block;
+}
+
+.karya-count small {
+  display: block;
+}

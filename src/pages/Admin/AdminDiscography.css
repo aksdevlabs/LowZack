@@ -1,0 +1,2787 @@
+/* =========================================================
+   LOWZACK
+   ADMIN DISCOGRAPHY
+   PREMIUM / LUXURY / DARK EDITORIAL
+========================================================= */
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+.admin-discography {
+  --ad-bg: #070707;
+  --ad-bg-soft: #0b0b0b;
+  --ad-surface: #101010;
+  --ad-surface-2: #141414;
+  --ad-surface-3: #181818;
+
+  --ad-white: #f4f4f1;
+  --ad-white-soft: #deded9;
+
+  --ad-text: #eeeeea;
+  --ad-muted: #858585;
+  --ad-muted-2: #5f5f5f;
+
+  --ad-gold: #c8a96b;
+  --ad-gold-light: #dfc58e;
+  --ad-gold-dark: #947844;
+
+  --ad-line: rgba(255, 255, 255, 0.085);
+  --ad-line-soft: rgba(255, 255, 255, 0.045);
+
+  --ad-success: #8fae82;
+  --ad-danger: #b97979;
+
+  --ad-radius: 2px;
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding:
+    70px
+    70px
+    120px;
+
+  color: var(--ad-text);
+
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(200, 169, 107, 0.055),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 10% 35%,
+      rgba(255, 255, 255, 0.025),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #070707 0%,
+      #080808 45%,
+      #050505 100%
+    );
+
+  font-family:
+    Inter,
+    Helvetica Neue,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BOX SIZING
+========================================================= */
+
+.admin-discography *,
+.admin-discography *::before,
+.admin-discography *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+.admin-discography button,
+.admin-discography input,
+.admin-discography select,
+.admin-discography textarea {
+  font: inherit;
+}
+
+.admin-discography button {
+  border: 0;
+}
+
+.admin-discography a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.admin-discography-header {
+  width: 100%;
+  max-width: 1500px;
+
+  margin:
+    0
+    auto
+    55px;
+
+  padding-bottom: 38px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  border-bottom:
+    1px solid
+    var(--ad-line);
+}
+
+
+.admin-discography-kicker {
+  margin-bottom: 18px;
+
+  color: var(--ad-gold);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 3.5px;
+
+  text-transform: uppercase;
+}
+
+
+.admin-discography-header h1 {
+  margin: 0;
+
+  color: var(--ad-white);
+
+  font-size:
+    clamp(
+      42px,
+      5vw,
+      78px
+    );
+
+  font-weight: 500;
+
+  line-height: 0.92;
+
+  letter-spacing:
+    -0.055em;
+
+  text-transform: uppercase;
+}
+
+
+.admin-discography-header p {
+  max-width: 570px;
+
+  margin:
+    22px
+    0
+    0;
+
+  color: var(--ad-muted);
+
+  font-size: 12px;
+
+  line-height: 1.8;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+========================================================= */
+
+.admin-discography-add-button {
+  min-width: 185px;
+  height: 50px;
+
+  padding:
+    0
+    22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color: #090909;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--ad-gold-light),
+      var(--ad-gold)
+    );
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+
+.admin-discography-add-button span {
+  font-size: 18px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+.admin-discography-add-button:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 35px
+    rgba(200, 169, 107, 0.16);
+}
+
+
+.admin-discography-add-button:active {
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.admin-discography-stats {
+  width: 100%;
+  max-width: 1500px;
+
+  margin:
+    0
+    auto
+    38px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 1fr);
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  background:
+    rgba(255, 255, 255, 0.012);
+}
+
+
+.admin-discography-stat {
+  min-height: 125px;
+
+  padding:
+    25px
+    26px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-right:
+    1px solid
+    var(--ad-line-soft);
+}
+
+
+.admin-discography-stat:last-child {
+  border-right: 0;
+}
+
+
+.admin-discography-stat span {
+  color: var(--ad-muted-2);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 2.4px;
+
+  text-transform: uppercase;
+}
+
+
+.admin-discography-stat strong {
+  color: var(--ad-white);
+
+  font-size: 34px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+.admin-discography-stat:first-child strong {
+  color: var(--ad-gold);
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.admin-discography-message {
+  width: 100%;
+  max-width: 1500px;
+
+  margin:
+    0
+    auto
+    20px;
+
+  min-height: 48px;
+
+  padding:
+    14px
+    18px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  border:
+    1px solid
+    var(--ad-line);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  font-size: 10px;
+
+  letter-spacing: 0.06em;
+}
+
+
+.admin-discography-message span {
+  width: 22px;
+  height: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+
+.admin-discography-message.success {
+  color: #cbd9c4;
+
+  border-color:
+    rgba(143, 174, 130, 0.2);
+
+  background:
+    rgba(143, 174, 130, 0.035);
+}
+
+
+.admin-discography-message.success span {
+  color: var(--ad-success);
+
+  border:
+    1px solid
+    rgba(143, 174, 130, 0.3);
+}
+
+
+.admin-discography-message.error {
+  color: #d9bebe;
+
+  border-color:
+    rgba(185, 121, 121, 0.22);
+
+  background:
+    rgba(185, 121, 121, 0.035);
+}
+
+
+.admin-discography-message.error span {
+  color: var(--ad-danger);
+
+  border:
+    1px solid
+    rgba(185, 121, 121, 0.3);
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.admin-discography-toolbar {
+  width: 100%;
+  max-width: 1500px;
+
+  margin:
+    0
+    auto
+    25px;
+
+  min-height: 70px;
+
+  padding:
+    13px
+    15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  background:
+    rgba(255, 255, 255, 0.018);
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.admin-discography-search {
+  flex:
+    1
+    1
+    auto;
+
+  min-width: 260px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+.admin-discography-search > span {
+  color: var(--ad-muted-2);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+.admin-discography-search input {
+  width: 100%;
+  max-width: 520px;
+
+  height: 42px;
+
+  padding:
+    0
+    15px;
+
+  color: var(--ad-white);
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.018);
+
+  font-size: 10px;
+
+  letter-spacing: 0.08em;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+
+.admin-discography-search input::placeholder {
+  color: #494949;
+}
+
+
+.admin-discography-search input:focus {
+  border-color:
+    rgba(200, 169, 107, 0.45);
+
+  background:
+    rgba(255, 255, 255, 0.028);
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.admin-discography-filters {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.admin-discography-filter {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+
+.admin-discography-filter label {
+  color: var(--ad-muted-2);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+}
+
+
+.admin-discography-filter select {
+  min-width: 105px;
+  height: 38px;
+
+  padding:
+    0
+    28px
+    0
+    12px;
+
+  color: var(--ad-text);
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  outline: none;
+
+  background-color:
+    #101010;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.admin-discography-content {
+  width: 100%;
+  max-width: 1500px;
+
+  margin:
+    0
+    auto;
+}
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+.admin-discography-state {
+  min-height: 420px;
+
+  padding: 60px 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  background:
+    rgba(255, 255, 255, 0.012);
+
+  text-align: center;
+}
+
+
+.admin-discography-state strong {
+  color: var(--ad-white);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+
+.admin-discography-state p {
+  max-width: 430px;
+
+  margin: 0;
+
+  color: var(--ad-muted);
+
+  font-size: 10px;
+
+  line-height: 1.7;
+
+  letter-spacing: 0.04em;
+}
+
+
+.admin-discography-loader {
+  width: 27px;
+  height: 27px;
+
+  margin-bottom: 10px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
+
+  border-top-color:
+    var(--ad-gold);
+
+  border-radius: 50%;
+
+  animation:
+    adminDiscographySpin
+    800ms
+    linear
+    infinite;
+}
+
+
+@keyframes adminDiscographySpin {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+
+.admin-discography-empty-number {
+  margin-bottom: 8px;
+
+  color:
+    rgba(200, 169, 107, 0.3);
+
+  font-size: 75px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.08em;
+}
+
+
+.admin-discography-empty-button {
+  margin-top: 12px;
+
+  height: 42px;
+
+  padding:
+    0
+    18px;
+
+  color: #090909;
+
+  background:
+    var(--ad-gold);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.admin-discography-empty-button:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 28px
+    rgba(200, 169, 107, 0.15);
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.admin-discography-table {
+  width: 100%;
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  background:
+    rgba(255, 255, 255, 0.008);
+}
+
+
+/* =========================================================
+   TABLE HEAD
+========================================================= */
+
+.admin-discography-table-head {
+  min-height: 48px;
+
+  padding:
+    0
+    22px;
+
+  display: grid;
+
+  grid-template-columns:
+    65px
+    minmax(320px, 2.4fr)
+    80px
+    90px
+    110px
+    110px
+    185px;
+
+  align-items: center;
+
+  border-bottom:
+    1px solid
+    var(--ad-line-soft);
+
+  background:
+    rgba(255, 255, 255, 0.018);
+}
+
+
+.admin-discography-table-head span {
+  color: #555;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.admin-discography-table-body {
+  width: 100%;
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
+
+.admin-discography-row {
+  min-height: 105px;
+
+  padding:
+    0
+    22px;
+
+  display: grid;
+
+  grid-template-columns:
+    65px
+    minmax(320px, 2.4fr)
+    80px
+    90px
+    110px
+    110px
+    185px;
+
+  align-items: center;
+
+  border-bottom:
+    1px solid
+    var(--ad-line-soft);
+
+  transition:
+    background 200ms ease;
+}
+
+
+.admin-discography-row:last-child {
+  border-bottom: 0;
+}
+
+
+.admin-discography-row:hover {
+  background:
+    rgba(255, 255, 255, 0.022);
+}
+
+
+/* =========================================================
+   ORDER
+========================================================= */
+
+.admin-discography-order {
+  color: #484848;
+
+  font-size: 11px;
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+
+.admin-discography-order span {
+  transition:
+    color 180ms ease;
+}
+
+
+.admin-discography-row:hover
+.admin-discography-order span {
+  color: var(--ad-gold);
+}
+
+
+/* =========================================================
+   RELEASE
+========================================================= */
+
+.admin-discography-release {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   THUMBNAIL
+========================================================= */
+
+.admin-discography-thumbnail {
+  position: relative;
+
+  flex:
+    0
+    0
+    72px;
+
+  width: 72px;
+  height: 72px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--ad-line);
+
+  background:
+    #0c0c0c;
+}
+
+
+.admin-discography-thumbnail img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 400ms ease;
+}
+
+
+.admin-discography-row:hover
+.admin-discography-thumbnail img {
+  transform:
+    scale(1.045);
+}
+
+
+.admin-discography-thumbnail-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color:
+    rgba(200, 169, 107, 0.45);
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+
+.admin-discography-thumbnail-overlay {
+  position: absolute;
+
+  left: 5px;
+  bottom: 5px;
+
+  padding:
+    4px
+    6px;
+
+  color: #eee;
+
+  background:
+    rgba(0, 0, 0, 0.72);
+
+  backdrop-filter:
+    blur(5px);
+
+  font-size: 6px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   RELEASE INFO
+========================================================= */
+
+.admin-discography-release-info {
+  min-width: 0;
+}
+
+
+.admin-discography-release-info h2 {
+  margin: 0 0 9px;
+
+  overflow: hidden;
+
+  color: var(--ad-white);
+
+  font-size: 15px;
+  font-weight: 500;
+
+  line-height: 1.15;
+
+  letter-spacing:
+    -0.015em;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  transition:
+    color 180ms ease;
+}
+
+
+.admin-discography-row:hover
+.admin-discography-release-info h2 {
+  color:
+    var(--ad-gold-light);
+}
+
+
+.admin-discography-release-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  font-size: 8px;
+
+  letter-spacing: 0.8px;
+
+  text-transform: uppercase;
+}
+
+
+.admin-discography-release-meta .artist {
+  color: #858585;
+
+  font-weight: 700;
+}
+
+
+.admin-discography-release-meta .separator {
+  color: #3d3d3d;
+}
+
+
+.admin-discography-release-meta .featured {
+  color: var(--ad-gold);
+
+  font-weight: 700;
+}
+
+
+.admin-discography-album {
+  margin-top: 8px;
+
+  color: #555;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 1.4px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+.admin-discography-year {
+  color: #8a8a8a;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   MEDIA
+========================================================= */
+
+.admin-discography-media span {
+  min-width: 54px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 25px;
+
+  padding:
+    0
+    8px;
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  font-size: 6px;
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+}
+
+
+.admin-discography-media span.audio {
+  color: #aaa;
+}
+
+
+.admin-discography-media span.video {
+  color: var(--ad-gold);
+
+  border-color:
+    rgba(200, 169, 107, 0.18);
+
+  background:
+    rgba(200, 169, 107, 0.035);
+}
+
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.admin-discography-category {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.admin-discography-category span {
+  color: #777;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 1.6px;
+}
+
+
+.admin-discography-category small {
+  color: #444;
+
+  font-size: 6px;
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.admin-discography-date {
+  color: #555;
+
+  font-size: 8px;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.admin-discography-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 5px;
+}
+
+
+.admin-discography-action-button {
+  min-width: 34px;
+  height: 30px;
+
+  padding:
+    0
+    8px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777;
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  background:
+    transparent;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+
+.admin-discography-action-button:hover {
+  transform:
+    translateY(-1px);
+}
+
+
+.admin-discography-action-button.view {
+  color: #999;
+
+  font-size: 13px;
+}
+
+
+.admin-discography-action-button.view:hover {
+  color: var(--ad-gold);
+
+  border-color:
+    rgba(200, 169, 107, 0.3);
+
+  background:
+    rgba(200, 169, 107, 0.04);
+}
+
+
+.admin-discography-action-button.edit:hover {
+  color: var(--ad-white);
+
+  border-color:
+    rgba(255, 255, 255, 0.18);
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+
+.admin-discography-action-button.duplicate:hover {
+  color: var(--ad-gold);
+
+  border-color:
+    rgba(200, 169, 107, 0.25);
+
+  background:
+    rgba(200, 169, 107, 0.035);
+}
+
+
+.admin-discography-action-button.delete {
+  color: #666;
+}
+
+
+.admin-discography-action-button.delete:hover {
+  color: #d49a9a;
+
+  border-color:
+    rgba(185, 121, 121, 0.3);
+
+  background:
+    rgba(185, 121, 121, 0.035);
+}
+
+
+.admin-discography-action-button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.admin-discography-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  padding:
+    35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    rgba(0, 0, 0, 0.82);
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+}
+
+
+/* =========================================================
+   MODAL PANEL
+========================================================= */
+
+.admin-discography-modal-panel {
+  width: min(
+    920px,
+    100%
+  );
+
+  max-height:
+    calc(100vh - 70px);
+
+  overflow-y: auto;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  background:
+    linear-gradient(
+      180deg,
+      #111111 0%,
+      #0b0b0b 100%
+    );
+
+  box-shadow:
+    0 35px 100px
+    rgba(0, 0, 0, 0.6);
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    #3b3b3b
+    transparent;
+}
+
+
+.admin-discography-modal-panel::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.admin-discography-modal-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.admin-discography-modal-panel::-webkit-scrollbar-thumb {
+  background: #353535;
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.admin-discography-modal-header {
+  min-height: 95px;
+
+  padding:
+    24px
+    30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  border-bottom:
+    1px solid
+    var(--ad-line-soft);
+}
+
+
+.admin-discography-modal-header > div > span {
+  color: var(--ad-gold);
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+}
+
+
+.admin-discography-modal-header h2 {
+  margin:
+    9px
+    0
+    0;
+
+  color: var(--ad-white);
+
+  font-size: 25px;
+  font-weight: 500;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.admin-discography-close {
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #777;
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  background:
+    transparent;
+
+  font-size: 22px;
+  font-weight: 300;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+
+.admin-discography-close:hover {
+  color: var(--ad-white);
+
+  border-color:
+    rgba(255, 255, 255, 0.18);
+
+  transform:
+    rotate(90deg);
+}
+
+
+.admin-discography-close:disabled {
+  opacity: 0.35;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   FORM ERROR
+========================================================= */
+
+.admin-discography-form-error {
+  margin:
+    22px
+    30px
+    0;
+
+  padding:
+    13px
+    15px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  color: #d8baba;
+
+  border:
+    1px solid
+    rgba(185, 121, 121, 0.2);
+
+  background:
+    rgba(185, 121, 121, 0.035);
+
+  font-size: 9px;
+
+  line-height: 1.5;
+}
+
+
+.admin-discography-form-error span {
+  width: 19px;
+  height: 19px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(185, 121, 121, 0.3);
+
+  border-radius: 50%;
+
+  color: var(--ad-danger);
+
+  font-size: 8px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.admin-discography-form {
+  padding:
+    30px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    23px
+    18px;
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.admin-discography-field {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+
+.admin-discography-field.full {
+  grid-column:
+    1 / -1;
+}
+
+
+.admin-discography-field > label {
+  color: #707070;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.admin-discography-field > small {
+  color: #484848;
+
+  font-size: 8px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.admin-discography-field input,
+.admin-discography-field select,
+.admin-discography-field textarea {
+  width: 100%;
+
+  color: var(--ad-white);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  font-size: 10px;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.admin-discography-field input,
+.admin-discography-field select {
+  height: 46px;
+
+  padding:
+    0
+    14px;
+}
+
+
+.admin-discography-field textarea {
+  min-height: 125px;
+
+  padding:
+    13px
+    14px;
+
+  resize:
+    vertical;
+
+  line-height: 1.65;
+}
+
+
+.admin-discography-field input::placeholder,
+.admin-discography-field textarea::placeholder {
+  color: #414141;
+}
+
+
+.admin-discography-field input:focus,
+.admin-discography-field select:focus,
+.admin-discography-field textarea:focus {
+  border-color:
+    rgba(200, 169, 107, 0.42);
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(200, 169, 107, 0.025);
+}
+
+
+.admin-discography-field select {
+  cursor: pointer;
+
+  background-color:
+    #111111;
+}
+
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.checkbox-field {
+  justify-content: flex-start;
+}
+
+
+.admin-discography-checkbox {
+  min-height: 46px;
+
+  padding:
+    0
+    14px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  color: #777;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+
+.admin-discography-checkbox input {
+  width: 15px;
+  height: 15px;
+
+  accent-color:
+    var(--ad-gold);
+
+  cursor: pointer;
+}
+
+
+.admin-discography-checkbox span {
+  color: #777;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   YOUTUBE PREVIEW
+========================================================= */
+
+.admin-discography-youtube-preview {
+  grid-column:
+    1 / -1;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--ad-line-soft);
+
+  background:
+    #090909;
+}
+
+
+.admin-discography-youtube-preview-head {
+  min-height: 48px;
+
+  padding:
+    0
+    14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  border-bottom:
+    1px solid
+    var(--ad-line-soft);
+}
+
+
+.admin-discography-youtube-preview-head span {
+  color: var(--ad-gold);
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+.admin-discography-youtube-preview-head strong {
+  overflow: hidden;
+
+  color: #555;
+
+  font-size: 7px;
+  font-weight: 500;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.admin-discography-youtube-preview img {
+  width: 100%;
+  max-height: 280px;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.admin-discography-form-actions {
+  grid-column:
+    1 / -1;
+
+  padding-top: 8px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  border-top:
+    1px solid
+    var(--ad-line-soft);
+}
+
+
+.admin-discography-cancel,
+.admin-discography-save {
+  min-height: 45px;
+
+  padding:
+    0
+    20px;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.admin-discography-cancel {
+  color: #777;
+
+  border:
+    1px solid
+    var(--ad-line);
+
+  background:
+    transparent;
+}
+
+
+.admin-discography-cancel:hover {
+  color: var(--ad-white);
+
+  border-color:
+    rgba(255, 255, 255, 0.16);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+}
+
+
+.admin-discography-save {
+  min-width: 165px;
+
+  color: #090909;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--ad-gold-light),
+      var(--ad-gold)
+    );
+}
+
+
+.admin-discography-save:hover {
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(200, 169, 107, 0.13);
+}
+
+
+.admin-discography-cancel:disabled,
+.admin-discography-save:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+.admin-discography ::selection {
+  color: #080808;
+
+  background:
+    var(--ad-gold);
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.admin-discography button:focus-visible,
+.admin-discography input:focus-visible,
+.admin-discography select:focus-visible,
+.admin-discography textarea:focus-visible,
+.admin-discography a:focus-visible {
+  outline:
+    1px solid
+    var(--ad-gold);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (max-width: 1350px) {
+
+  .admin-discography {
+    padding:
+      55px
+      45px
+      100px;
+  }
+
+
+  .admin-discography-table-head,
+  .admin-discography-row {
+    grid-template-columns:
+      55px
+      minmax(280px, 2.2fr)
+      70px
+      80px
+      100px
+      95px
+      170px;
+  }
+
+
+  .admin-discography-thumbnail {
+    flex-basis: 64px;
+
+    width: 64px;
+    height: 64px;
+  }
+
+
+  .admin-discography-release {
+    gap: 14px;
+  }
+
+
+  .admin-discography-action-button {
+    padding:
+      0
+      6px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .admin-discography {
+    padding:
+      45px
+      30px
+      90px;
+  }
+
+
+  .admin-discography-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 28px;
+  }
+
+
+  .admin-discography-add-button {
+    width: 100%;
+  }
+
+
+  .admin-discography-stats {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+
+  .admin-discography-stat:nth-child(3) {
+    border-right: 0;
+  }
+
+
+  .admin-discography-stat:nth-child(4),
+  .admin-discography-stat:nth-child(5) {
+    border-top:
+      1px solid
+      var(--ad-line-soft);
+  }
+
+
+  .admin-discography-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+
+  .admin-discography-search {
+    width: 100%;
+  }
+
+
+  .admin-discography-search input {
+    max-width: none;
+  }
+
+
+  .admin-discography-filters {
+    width: 100%;
+  }
+
+
+  .admin-discography-filter {
+    flex: 1;
+  }
+
+
+  .admin-discography-filter select {
+    width: 100%;
+  }
+
+
+  /*
+    Convert table into
+    card layout.
+  */
+
+  .admin-discography-table-head {
+    display: none;
+  }
+
+
+  .admin-discography-row {
+    min-height: auto;
+
+    padding:
+      20px;
+
+    display: grid;
+
+    grid-template-columns:
+      55px
+      minmax(0, 1fr)
+      auto;
+
+    grid-template-areas:
+      "order release actions"
+      "order details actions";
+
+    gap:
+      10px
+      15px;
+  }
+
+
+  .admin-discography-order {
+    grid-area: order;
+
+    align-self: start;
+
+    padding-top: 8px;
+  }
+
+
+  .admin-discography-release {
+    grid-area: release;
+  }
+
+
+  .admin-discography-year {
+    display: none;
+  }
+
+
+  .admin-discography-media {
+    display: none;
+  }
+
+
+  .admin-discography-category {
+    grid-area: details;
+
+    margin-left: 87px;
+
+    flex-direction: row;
+    align-items: center;
+
+    gap: 12px;
+  }
+
+
+  .admin-discography-date {
+    display: none;
+  }
+
+
+  .admin-discography-actions {
+    grid-area: actions;
+
+    align-self: center;
+
+    flex-direction: column;
+  }
+
+
+  .admin-discography-action-button {
+    width: 48px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 720px) {
+
+  .admin-discography {
+    padding:
+      35px
+      18px
+      70px;
+  }
+
+
+  .admin-discography-header {
+    margin-bottom: 35px;
+
+    padding-bottom: 28px;
+  }
+
+
+  .admin-discography-kicker {
+    font-size: 7px;
+
+    letter-spacing: 2.5px;
+  }
+
+
+  .admin-discography-header h1 {
+    font-size:
+      clamp(
+        38px,
+        12vw,
+        58px
+      );
+  }
+
+
+  .admin-discography-header p {
+    margin-top: 17px;
+
+    font-size: 10px;
+  }
+
+
+  .admin-discography-stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .admin-discography-stat {
+    min-height: 105px;
+
+    padding:
+      19px;
+  }
+
+
+  .admin-discography-stat:nth-child(2) {
+    border-right: 0;
+  }
+
+
+  .admin-discography-stat:nth-child(3) {
+    border-right:
+      1px solid
+      var(--ad-line-soft);
+  }
+
+
+  .admin-discography-stat:nth-child(4),
+  .admin-discography-stat:nth-child(5) {
+    border-top:
+      1px solid
+      var(--ad-line-soft);
+  }
+
+
+  .admin-discography-stat strong {
+    font-size: 28px;
+  }
+
+
+  .admin-discography-toolbar {
+    padding:
+      12px;
+  }
+
+
+  .admin-discography-search {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+
+  .admin-discography-search input {
+    max-width: none;
+  }
+
+
+  .admin-discography-filters {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .admin-discography-filter {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 6px;
+  }
+
+
+  .admin-discography-row {
+    grid-template-columns:
+      38px
+      minmax(0, 1fr)
+      42px;
+
+    padding:
+      16px
+      12px;
+
+    gap:
+      8px
+      8px;
+  }
+
+
+  .admin-discography-thumbnail {
+    flex-basis: 52px;
+
+    width: 52px;
+    height: 52px;
+  }
+
+
+  .admin-discography-release {
+    gap: 11px;
+  }
+
+
+  .admin-discography-release-info h2 {
+    margin-bottom: 6px;
+
+    font-size: 12px;
+  }
+
+
+  .admin-discography-release-meta {
+    font-size: 7px;
+
+    gap: 5px;
+  }
+
+
+  .admin-discography-album {
+    margin-top: 5px;
+
+    font-size: 6px;
+  }
+
+
+  .admin-discography-category {
+    margin-left: 63px;
+
+    gap: 8px;
+  }
+
+
+  .admin-discography-category span {
+    font-size: 6px;
+  }
+
+
+  .admin-discography-category small {
+    font-size: 5px;
+  }
+
+
+  .admin-discography-actions {
+    gap: 4px;
+  }
+
+
+  .admin-discography-action-button {
+    width: 38px;
+    min-width: 38px;
+
+    height: 27px;
+
+    padding: 0;
+
+    font-size: 6px;
+  }
+
+
+  .admin-discography-action-button.view {
+    font-size: 11px;
+  }
+
+
+  .admin-discography-modal {
+    padding:
+      12px;
+  }
+
+
+  .admin-discography-modal-panel {
+    max-height:
+      calc(100vh - 24px);
+  }
+
+
+  .admin-discography-modal-header {
+    min-height: 78px;
+
+    padding:
+      18px;
+  }
+
+
+  .admin-discography-modal-header h2 {
+    font-size: 20px;
+  }
+
+
+  .admin-discography-form {
+    padding:
+      20px
+      18px;
+
+    grid-template-columns:
+      1fr;
+
+    gap: 18px;
+  }
+
+
+  .admin-discography-field.full {
+    grid-column:
+      auto;
+  }
+
+
+  .admin-discography-youtube-preview {
+    grid-column:
+      auto;
+  }
+
+
+  .admin-discography-form-actions {
+    grid-column:
+      auto;
+
+    display: grid;
+
+    grid-template-columns:
+      1fr
+      1.5fr;
+  }
+
+
+  .admin-discography-cancel,
+  .admin-discography-save {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .admin-discography {
+    padding:
+      28px
+      12px
+      60px;
+  }
+
+
+  .admin-discography-stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .admin-discography-stat {
+    min-height: 95px;
+
+    padding:
+      15px;
+  }
+
+
+  .admin-discography-stat span {
+    font-size: 6px;
+
+    letter-spacing: 1.6px;
+  }
+
+
+  .admin-discography-stat strong {
+    font-size: 24px;
+  }
+
+
+  .admin-discography-row {
+    grid-template-columns:
+      30px
+      minmax(0, 1fr)
+      35px;
+
+    padding:
+      14px
+      8px;
+  }
+
+
+  .admin-discography-thumbnail {
+    flex-basis: 45px;
+
+    width: 45px;
+    height: 45px;
+  }
+
+
+  .admin-discography-release {
+    gap: 8px;
+  }
+
+
+  .admin-discography-release-info h2 {
+    font-size: 10px;
+  }
+
+
+  .admin-discography-release-meta {
+    font-size: 6px;
+  }
+
+
+  .admin-discography-category {
+    margin-left: 53px;
+  }
+
+
+  .admin-discography-action-button {
+    width: 32px;
+    min-width: 32px;
+
+    height: 25px;
+  }
+
+
+  .admin-discography-action-button.duplicate,
+  .admin-discography-action-button.delete {
+    display: none;
+  }
+
+
+  .admin-discography-modal-header {
+    padding:
+      16px;
+  }
+
+
+  .admin-discography-form {
+    padding:
+      18px
+      15px;
+  }
+
+
+  .admin-discography-form-actions {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .admin-discography *,
+  .admin-discography *::before,
+  .admin-discography *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+
+}
+
+/* =========================================================
+   ADMINPAGE EXACT STRUCTURE — FINAL
+   LOWZACK / ADMIN
+   DISCOGRAPHY
+========================================================= */
+
+/* The AdminPage topbar lives outside the padded content area. */
+.admin-discography-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #070707;
+}
+
+.admin-discography-main {
+  width: calc(100% - var(--admin-sidebar-width, 250px));
+  min-height: 100vh;
+  margin-left: var(--admin-sidebar-width, 250px);
+}
+
+/* =========================================================
+   TOPBAR — SAME DOM / SAME VALUES AS ADMINPAGE
+========================================================= */
+
+.admin-topbar {
+  min-height: 82px;
+
+  padding:
+    0
+    clamp(22px, 4vw, 54px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--admin-border, rgba(255, 255, 255, 0.08));
+
+  background: rgba(8, 8, 8, 0.88);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.admin-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.admin-page-eyebrow {
+  margin-bottom: 6px;
+
+  color: var(--admin-gold, #d4af37);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1;
+}
+
+.admin-topbar h1 {
+  margin: 0;
+
+  color: #f5f5f5;
+
+  font-family:
+    Georgia,
+    Times New Roman,
+    serif;
+
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.admin-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #666;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1;
+}
+
+.admin-live-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+
+  background: #67b87a;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(103, 184, 122, 0.08);
+}
+
+/* =========================================================
+   CONTENT — ADMINPAGE SPACING
+========================================================= */
+
+.admin-discography {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+
+  padding:
+    clamp(30px, 4vw, 56px)
+    clamp(22px, 4vw, 60px)
+    80px;
+}
+
+/* The action area is content, not the topbar. */
+.admin-discography-header {
+  margin: 0 0 38px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  border-bottom: 0;
+}
+
+.admin-discography-header-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.admin-discography-header-copy p {
+  max-width: 570px;
+  margin: 0;
+
+  color: var(--ad-muted, #858585);
+  font-size: 12px;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+.admin-discography-add-button {
+  flex: 0 0 auto;
+  min-width: 0;
+  height: 43px;
+  margin-left: auto;
+  padding: 0 17px;
+  border-radius: 0;
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+/* Remove old header typography because DISCOGRAPHY now belongs
+   exclusively to the real AdminPage-style topbar. */
+.admin-discography-header > div > .admin-discography-kicker,
+.admin-discography-header > div > h1 {
+  display: none;
+}
+
+/* =========================================================
+   MOBILE — SAME TOPBAR SCALE BEHAVIOR
+========================================================= */
+
+@media (max-width: 900px) {
+  .admin-discography-main {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .admin-topbar {
+    min-height: 70px;
+    padding: 0 16px;
+  }
+
+  .admin-topbar-right {
+    display: none;
+  }
+
+  .admin-topbar h1 {
+    font-size: 24px;
+  }
+
+  .admin-discography {
+    padding:
+      28px
+      15px
+      60px;
+  }
+
+  .admin-discography-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .admin-discography-add-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .admin-topbar {
+    padding: 0 12px;
+  }
+
+  .admin-topbar h1 {
+    font-size: 22px;
+  }
+}
