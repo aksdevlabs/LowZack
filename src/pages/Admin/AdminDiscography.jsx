@@ -69,7 +69,8 @@ const getEmptyForm = () => ({
   format: "single",
   youtubeUrl: "",
   spotifyUrl: "",
-});;
+  audioUrl: "",
+});
 
 
 /* =========================================================
@@ -123,6 +124,13 @@ function normalizeWork(work) {
     spotifyUrl:
       work.Sumber?.spotify ||
       work.Sumber?.Spotify ||
+      "",
+
+    audioUrl:
+      work.audioUrl ||
+      work.AudioUrl ||
+      work.Sumber?.audioUrl ||
+      work.Sumber?.audioURL ||
       "",
   };
 }
@@ -579,6 +587,12 @@ export default function AdminDiscography() {
         Boolean(work.spotifyUrl)
     ).length;
 
+  const totalAudioUrl =
+    works.filter(
+      (work) =>
+        Boolean(work.audioUrl)
+    ).length;
+
 
   /* =======================================================
      FORM CHANGE
@@ -671,6 +685,10 @@ export default function AdminDiscography() {
         spotifyUrl:
           work.spotifyUrl ||
           "",
+
+        audioUrl:
+          work.audioUrl ||
+          "",
       });
 
       setFormError("");
@@ -743,6 +761,9 @@ export default function AdminDiscography() {
       const spotifyUrl =
         form.spotifyUrl.trim();
 
+      const audioUrl =
+        form.audioUrl.trim();
+
       const format =
         form.format === "album"
           ? "Album"
@@ -814,11 +835,12 @@ export default function AdminDiscography() {
 
       if (
         !youtubeUrl &&
-        !spotifyUrl
+        !spotifyUrl &&
+        !audioUrl
       ) {
 
         setFormError(
-          "Please enter at least one YouTube or Spotify source."
+          "Please enter at least one YouTube, Spotify, or Audio URL source."
         );
 
         return;
@@ -856,6 +878,9 @@ export default function AdminDiscography() {
           spotify:
             spotifyUrl,
         },
+
+        audioUrl:
+          audioUrl,
       };
 
 
@@ -1024,6 +1049,10 @@ export default function AdminDiscography() {
 
         spotifyUrl:
           work.spotifyUrl ||
+          "",
+
+        audioUrl:
+          work.audioUrl ||
           "",
       });
 
@@ -1622,6 +1651,20 @@ export default function AdminDiscography() {
                               </a>
                             )}
 
+                            {work.audioUrl && (
+                              <a
+                                href={work.audioUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                  color: "inherit",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                AUDIO ↗
+                              </a>
+                            )}
+
                             {work.spotifyUrl && (
                               <a
                                 href={
@@ -1641,7 +1684,8 @@ export default function AdminDiscography() {
                             )}
 
                             {!work.youtubeUrl &&
-                              !work.spotifyUrl && (
+                              !work.spotifyUrl &&
+                              !work.audioUrl && (
                                 <span>
                                   —
                                 </span>
@@ -1664,6 +1708,18 @@ export default function AdminDiscography() {
                               title="Open YouTube"
                             >
                               YT ↗
+                            </a>
+                          )}
+
+                          {work.audioUrl && (
+                            <a
+                              href={work.audioUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="admin-discography-action-button view"
+                              title="Open Audio URL"
+                            >
+                              AU ↗
                             </a>
                           )}
 
@@ -2017,6 +2073,34 @@ export default function AdminDiscography() {
               )}
 
 
+              {/* AUDIO URL */}
+
+              <div className="admin-discography-field full">
+
+                <label>
+                  AUDIO URL
+                </label>
+
+                <input
+                  type="url"
+                  name="audioUrl"
+                  value={
+                    form.audioUrl
+                  }
+                  onChange={
+                    handleChange
+                  }
+                  placeholder="https://.../audio/karya-audio/STILL-YOUNG.mp3"
+                  autoComplete="off"
+                />
+
+                <small>
+                  Optional. Masukkan direct URL file MP3. Tidak perlu upload MP3.
+                </small>
+
+              </div>
+
+
               {/* YOUTUBE */}
 
               <div className="admin-discography-field full">
@@ -2073,7 +2157,8 @@ export default function AdminDiscography() {
 
               {/* SOURCE PREVIEW */}
 
-              {(form.youtubeUrl ||
+              {(form.audioUrl ||
+                form.youtubeUrl ||
                 form.spotifyUrl) && (
                 <div className="admin-discography-youtube-preview">
 
@@ -2085,6 +2170,8 @@ export default function AdminDiscography() {
 
                     <strong>
                       {[
+                        form.audioUrl &&
+                          "AUDIO URL",
                         form.youtubeUrl &&
                           "YOUTUBE",
                         form.spotifyUrl &&
@@ -2109,6 +2196,12 @@ export default function AdminDiscography() {
                         "break-word",
                     }}
                   >
+                    {form.audioUrl && (
+                      <span>
+                        {form.audioUrl}
+                      </span>
+                    )}
+
                     {form.youtubeUrl && (
                       <span>
                         {form.youtubeUrl}

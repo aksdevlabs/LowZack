@@ -142,7 +142,7 @@
     #c7c7c7;
 
   font-size:
-    7px;
+    6px !important;
 
   font-weight:
     800;
@@ -535,10 +535,10 @@
 
   font-size:
     clamp(
-      32px,
-      9vw,
-      62px
-    );
+      24px,
+      7vw,
+      46px
+    ) !important;
 
   font-weight:
     900;
@@ -705,7 +705,7 @@
 
   .nav-link {
     font-size:
-      8px;
+      6px !important;
   }
 
 }
@@ -724,7 +724,7 @@
 
   .nav-link {
     font-size:
-      7.5px;
+      5.8px !important;
 
     letter-spacing:
       1.5px;
@@ -807,7 +807,7 @@
 
   .mobile-navigation a {
     font-size:
-      35px;
+      26px !important;
 
     padding:
       16px 0;
@@ -1095,4 +1095,40 @@
     letter-spacing: 1.25px;
   }
 
+}
+
+
+/* =========================================================
+   FINAL MENU FONT SIZE OVERRIDE
+   ---------------------------------------------------------
+   Only controls menu text size.
+   No layout / position / color / spacing changes.
+========================================================= */
+
+.lowzack-navbar .desktop-nav .nav-link {
+  font-size: 6px !important;
+}
+
+@media (max-width: 1200px) {
+  .lowzack-navbar .desktop-nav .nav-link {
+    font-size: 6px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .lowzack-navbar .desktop-nav .nav-link {
+    font-size: 5.8px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .lowzack-navbar .mobile-navigation a {
+    font-size: clamp(24px, 7vw, 46px) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .lowzack-navbar .mobile-navigation a {
+    font-size: 26px !important;
+  }
 }

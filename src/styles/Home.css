@@ -581,7 +581,7 @@ html {
 
 .listen-icon {
   display:
-    flex;
+    inline-flex;
 
   align-items:
     center;
@@ -595,6 +595,18 @@ html {
   height:
     18px;
 
+  flex:
+    0 0 18px;
+
+  flex-shrink:
+    0;
+
+  margin:
+    0;
+
+  padding:
+    0;
+
   border-radius:
     50%;
 
@@ -605,7 +617,49 @@ html {
     #050505;
 
   font-size:
-    7px;
+    0;
+
+  line-height:
+    0;
+
+  text-align:
+    center;
+
+  vertical-align:
+    middle;
+
+  transform:
+    translateY(0);
+
+  overflow:
+    hidden;
+}
+
+/* PERFECTLY CENTERED PLAY TRIANGLE */
+.listen-icon::before {
+  content:
+    "";
+
+  display:
+    block;
+
+  width:
+    0;
+
+  height:
+    0;
+
+  margin-left:
+    1px;
+
+  border-top:
+    3.5px solid transparent;
+
+  border-bottom:
+    3.5px solid transparent;
+
+  border-left:
+    5px solid currentColor;
 }
 
 .listen-button:hover
@@ -2448,6 +2502,9 @@ animation:
   font-size: 20px;
   font-weight: 400;
   line-height: 1;
+  text-align: center;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
 
   cursor: pointer;
 
@@ -2552,7 +2609,7 @@ animation:
   align-items: center;
   justify-content: center;
 
-  padding: 0 0 0 2px;
+  padding: 0;
 
   border: 2px solid var(--gold);
   border-radius: 50%;
@@ -6107,4 +6164,848 @@ animation:
   .release-highlight-card .featured-video-image {
     aspect-ratio: 16 / 8 !important;
   }
+}
+
+/* =========================================================
+   LOWZACK — YOUTUBE STYLE MINIMIZE PLAYER
+   ---------------------------------------------------------
+   BIG PLAYER
+   - Existing full player remains unchanged.
+   - Minimize button uses ↘.
+
+   MINI PLAYER
+   - Compact YouTube-style floating player.
+   - Fixed at bottom-right.
+   - No empty modal area.
+   - Cover + title + artist + controls.
+   - Progress line at the bottom.
+   - Expand button uses ↖.
+========================================================= */
+
+
+/* =========================================================
+   BIG PLAYER — MINIMIZE BUTTON
+========================================================= */
+
+.track-modal-minimize {
+  position: absolute;
+
+  top: 17px;
+  right: 68px;
+
+  z-index: 10;
+
+  width: 41px;
+  height: 41px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  color: #ffffff;
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.track-modal-minimize:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #050505;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   MINI MODE — IMPORTANT
+   Remove the original full modal dimensions.
+========================================================= */
+
+.track-modal.track-modal-minimized {
+  position: fixed;
+
+  inset: auto;
+
+  right: 24px;
+  bottom: 24px;
+  left: auto;
+  top: auto;
+
+  width: auto;
+  height: auto;
+
+  display: block;
+
+  padding: 0;
+
+  z-index: 5000;
+
+  background: transparent;
+
+  pointer-events: none;
+}
+
+.track-modal.track-modal-minimized .track-modal-inner {
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+
+  display: block;
+
+  overflow: visible;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: 0;
+
+  box-shadow: none;
+
+  animation: none;
+
+  transform: none;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   MINI PLAYER — YOUTUBE STYLE
+========================================================= */
+
+.track-mini-player {
+  position: relative;
+
+  width: min(430px, calc(100vw - 32px));
+  height: 84px;
+
+  display: grid;
+
+  grid-template-columns:
+    66px
+    minmax(0, 1fr)
+    32px
+    32px
+    32px;
+
+  align-items: center;
+
+  column-gap: 10px;
+
+  overflow: hidden;
+
+  padding: 8px 12px 8px 8px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #171717 0%,
+      #0d0d0d 100%
+    );
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.14);
+
+  border-radius: 5px;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.60),
+    0 5px 18px rgba(0, 0, 0, 0.40);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  animation:
+    trackMiniPlayerIn
+    0.28s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+@keyframes trackMiniPlayerIn {
+  from {
+    opacity: 0;
+    transform:
+      translateY(12px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   MINI COVER
+========================================================= */
+
+.track-mini-cover {
+  width: 66px;
+  height: 66px;
+
+  overflow: hidden;
+
+  flex: 0 0 auto;
+
+  background: #111111;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.10);
+}
+
+.track-mini-cover img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   MINI INFO
+========================================================= */
+
+.track-mini-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 5px;
+}
+
+.track-mini-info strong {
+  display: block;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: #f2f2f2;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  line-height: 1.15;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.track-mini-info span {
+  display: block;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: #777777;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   MINI BUTTONS
+========================================================= */
+
+.track-mini-play,
+.track-mini-expand,
+.track-mini-close {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.16);
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.18);
+
+  color: #dddddd;
+
+  cursor: pointer;
+
+  line-height: 1;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.track-mini-play {
+  font-size: 9px;
+  font-weight: 900;
+
+  padding-left: 1px;
+}
+
+.track-mini-expand {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.track-mini-close {
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.track-mini-play:hover,
+.track-mini-expand:hover {
+  background: var(--gold);
+
+  border-color: var(--gold);
+
+  color: #050505;
+
+  transform: scale(1.05);
+}
+
+.track-mini-close:hover {
+  background: #ffffff;
+
+  border-color: #ffffff;
+
+  color: #050505;
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   MINI PROGRESS
+========================================================= */
+
+.track-mini-progress {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      to right,
+      var(--gold) 0%,
+      var(--gold) var(--mini-progress, 0%),
+      #303030 var(--mini-progress, 0%),
+      #303030 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MINI PLAYER — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .track-modal.track-modal-minimized {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .track-mini-player {
+    width: min(390px, calc(100vw - 24px));
+    height: 74px;
+
+    grid-template-columns:
+      58px
+      minmax(0, 1fr)
+      30px
+      30px
+      30px;
+
+    column-gap: 7px;
+
+    padding:
+      7px 8px 7px 7px;
+  }
+
+  .track-mini-cover {
+    width: 58px;
+    height: 58px;
+  }
+
+  .track-mini-info {
+    gap: 4px;
+  }
+
+  .track-mini-info strong {
+    font-size: 10px;
+  }
+
+  .track-mini-info span {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .track-mini-play,
+  .track-mini-expand,
+  .track-mini-close {
+    width: 30px;
+    height: 30px;
+  }
+
+  .track-mini-play {
+    font-size: 8px;
+  }
+
+  .track-mini-expand {
+    font-size: 14px;
+  }
+
+  .track-mini-close {
+    font-size: 16px;
+  }
+
+  .track-modal-minimize {
+    top: 10px;
+    right: 54px;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 19px;
+  }
+}
+
+
+/* =========================================================
+   MINI PLAYER — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .track-modal.track-modal-minimized {
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .track-mini-player {
+    width: calc(100vw - 16px);
+    height: 68px;
+
+    grid-template-columns:
+      52px
+      minmax(0, 1fr)
+      28px
+      28px
+      28px;
+
+    column-gap: 5px;
+
+    padding:
+      6px 7px 6px 6px;
+  }
+
+  .track-mini-cover {
+    width: 52px;
+    height: 52px;
+  }
+
+  .track-mini-info strong {
+    font-size: 9px;
+  }
+
+  .track-mini-info span {
+    font-size: 6px;
+    letter-spacing: 0.8px;
+  }
+
+  .track-mini-play,
+  .track-mini-expand,
+  .track-mini-close {
+    width: 27px;
+    height: 27px;
+  }
+
+  .track-mini-play {
+    font-size: 7px;
+  }
+
+  .track-mini-expand {
+    font-size: 12px;
+  }
+
+  .track-mini-close {
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.track-modal-minimize:focus-visible,
+.track-mini-play:focus-visible,
+.track-mini-expand:focus-visible,
+.track-mini-close:focus-visible {
+  outline:
+    1px solid
+    var(--gold);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .track-mini-player {
+    animation: none;
+  }
+
+  .track-modal-minimize,
+  .track-mini-play,
+  .track-mini-expand,
+  .track-mini-close {
+    transition: none;
+  }
+}
+
+
+/* =========================================================
+   FINAL FIX — MINIMIZE ARROW MATCHES CLOSE BUTTON
+   Tablet / Mobile / Small Mobile
+   Only the ↘ minimize button is adjusted here.
+========================================================= */
+
+.track-modal-minimize {
+  width: 41px;
+  height: 41px;
+
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+/* Tablet / Small Desktop */
+@media (max-width: 900px) {
+  .track-modal-minimize,
+  .track-modal-close {
+    width: 36px;
+    height: 36px;
+  }
+
+  .track-modal-minimize {
+    font-size: 18px;
+  }
+
+  .track-modal-close {
+    font-size: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .track-modal-minimize,
+  .track-modal-close {
+    width: 34px;
+    height: 34px;
+  }
+
+  .track-modal-minimize {
+    font-size: 17px;
+  }
+
+  .track-modal-close {
+    font-size: 17px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 420px) {
+  .track-modal-minimize,
+  .track-modal-close {
+    width: 34px;
+    height: 34px;
+  }
+
+  .track-modal-minimize {
+    font-size: 17px;
+  }
+
+  .track-modal-close {
+    font-size: 17px;
+  }
+}
+
+
+/* =========================================================
+   FINAL FIX — BIG PLAYER TOP BUTTONS ALIGNED
+   ---------------------------------------------------------
+   ↘ MINIMIZE and × CLOSE use the exact same vertical center.
+   Horizontal spacing remains clean and consistent.
+========================================================= */
+
+.track-modal-minimize,
+.track-modal-close {
+  top: 17px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transform: none;
+}
+
+.track-modal-minimize {
+  right: 68px !important;
+}
+
+.track-modal-close {
+  right: 17px !important;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .track-modal-minimize,
+  .track-modal-close {
+    top: 10px !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .track-modal-minimize {
+    right: 56px !important;
+    font-size: 18px !important;
+  }
+
+  .track-modal-close {
+    right: 10px !important;
+    font-size: 18px !important;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .track-modal-minimize,
+  .track-modal-close {
+    top: 10px !important;
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .track-modal-minimize {
+    right: 54px !important;
+    font-size: 17px !important;
+  }
+
+  .track-modal-close {
+    right: 10px !important;
+    font-size: 17px !important;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 420px) {
+  .track-modal-minimize,
+  .track-modal-close {
+    top: 10px !important;
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .track-modal-minimize {
+    right: 54px !important;
+    font-size: 17px !important;
+  }
+
+  .track-modal-close {
+    right: 10px !important;
+    font-size: 17px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE / TOUCH — LISTEN NOW HOVER FIX
+   Prevent desktop hover styling from sticking on touch devices.
+   Desktop hover remains unchanged.
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .listen-button:hover {
+    background: rgba(0, 0, 0, 0.32);
+    color: #ffffff;
+    transform: none;
+  }
+
+  .listen-button:hover .listen-icon {
+    background: var(--gold);
+    color: #050505;
+  }
+
+  .listen-button:active {
+    background: rgba(0, 0, 0, 0.32);
+    color: #ffffff;
+    transform: none;
+  }
+
+  .listen-button:active .listen-icon {
+    background: var(--gold);
+    color: #050505;
+  }
+
+}
+
+/* =========================================================
+   MOBILE / TABLET — LISTEN NOW MATCH DESKTOP
+   Keep the exact desktop proportions on smaller screens.
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .listen-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    min-width: 160px;
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+
+    background: rgba(0, 0, 0, 0.32);
+    color: #ffffff;
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    line-height: 1;
+    text-align: center;
+    vertical-align: middle;
+
+    transform: none;
+  }
+
+  .listen-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    flex: 0 0 18px;
+    flex-shrink: 0;
+
+    margin: 0;
+    padding: 0;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+    color: #050505;
+
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+    vertical-align: middle;
+
+    transform: none;
+    overflow: hidden;
+  }
+
+  .listen-icon::before {
+    content: "";
+
+    display: block;
+
+    width: 0;
+    height: 0;
+
+    margin-left: 1px;
+
+    border-top: 3.5px solid transparent;
+    border-bottom: 3.5px solid transparent;
+    border-left: 5px solid currentColor;
+  }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES — KEEP DESKTOP RESTING APPEARANCE
+   Prevent sticky hover from turning the button gold.
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .listen-button:hover,
+  .listen-button:active {
+    background: rgba(0, 0, 0, 0.32);
+    color: #ffffff;
+    transform: none;
+  }
+
+  .listen-button:hover .listen-icon,
+  .listen-button:active .listen-icon {
+    background: var(--gold);
+    color: #050505;
+  }
+
 }

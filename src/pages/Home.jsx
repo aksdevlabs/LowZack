@@ -47,7 +47,7 @@ const heroData = {
     "RAPPER / SONGWRITER / INDONESIAN HIP-HOP ARTIST",
 
   description:
-    "LowZack is a rapper from Bogor Barat, Indonesia.\nStarting his career in 2018, he's known as a lyrical rapper who can execute beats and instruments across all genres.\nindependent hip-hop/rap artist affiliated with MEGABAYZ Enterprises.",
+    "LowZack is a rapper from Bogor, Indonesia.\nStarting his career in 2018, he's known as a lyrical rapper who can execute beats and instruments across all genres.\nLowZack is an independent hip-hop/rap artist affiliated with MEGABAYZ Enterprises.",
 
   image:
     bannerLowzack,
@@ -60,6 +60,7 @@ const heroData = {
 ========================================================= */
 
 const RELEASES_COLLECTION = "karya";
+const DISCOGRAPHY_COLLECTION = "Discography";
 
 
 /* =========================================================
@@ -629,6 +630,11 @@ function Home() {
     setActiveTrack,
   ] = useState(null);
 
+  const [
+    isPlayerMinimized,
+    setIsPlayerMinimized,
+  ] = useState(false);
+
   const audioRef = useRef(null);
 
   const [
@@ -761,6 +767,12 @@ function Home() {
 
 
   const [
+    discographyTracks,
+    setDiscographyTracks,
+  ] = useState([]);
+
+
+  const [
     youtubeViews,
     setYoutubeViews,
   ] = useState({});
@@ -832,6 +844,37 @@ function Home() {
       unsubscribe();
     };
 
+  }, []);
+
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, DISCOGRAPHY_COLLECTION),
+      (snapshot) => {
+        const tracks = snapshot.docs.map((document) => {
+          const data = document.data();
+          const artist = data.Artis || data.artist || "LOWZACK";
+
+          return {
+            id: document.id,
+            ...data,
+            title: data.JudulLagu || data.title || data.name || "UNTITLED",
+            artist: Array.isArray(artist) ? artist.join(", ") : String(artist),
+            audioUrl: data.audioUrl || data.AudioUrl || "",
+            youtubeUrl: data.Sumber?.youtube || data.youtubeUrl || "",
+            year: data.TahunRilis || data.year || "",
+          };
+        });
+
+        setDiscographyTracks(sortReleases(tracks));
+      },
+      (snapshotError) => {
+        console.error("Home Discography Firestore error:", snapshotError);
+        setDiscographyTracks([]);
+      }
+    );
+
+    return () => unsubscribe();
   }, []);
 
 
@@ -1050,7 +1093,7 @@ function Home() {
 
 
   const lowzackTracks = useMemo(() => {
-    return releases
+    return discographyTracks
       .filter((release) => isLowzackTrack(release))
       .map((release, index) => ({
         id: release.id,
@@ -1067,7 +1110,7 @@ function Home() {
         artist: getTrackArtist(release),
         isPlaylistTrack: true,
       }));
-  }, [releases]);
+  }, [discographyTracks]);
 
 
   /* =======================================================
@@ -1681,6 +1724,8 @@ function Home() {
                               return;
                             }
 
+                            setIsPlayerMinimized(false);
+
                             setActiveTrack({
                               id:
                                 release.id,
@@ -2002,6 +2047,8 @@ function Home() {
                           return;
                         }
 
+                        setIsPlayerMinimized(false);
+
                         setActiveTrack(
                           track
                         );
@@ -2103,181 +2150,281 @@ function Home() {
       {activeTrack && (
 
         <div
-          className="track-modal"
-          onClick={() =>
-            setActiveTrack(null)
-          }
+          className={`track-modal ${
+            isPlayerMinimized
+              ? "track-modal-minimized"
+              : ""
+          }`}
+          onClick={() => {
+            if (!isPlayerMinimized) {
+              setActiveTrack(null);
+              setIsPlayerMinimized(false);
+            }
+          }}
         >
 
           <div
-            className="track-modal-inner"
+            className={`track-modal-inner ${
+              isPlayerMinimized
+                ? "track-modal-inner-minimized"
+                : ""
+            }`}
             onClick={(event) =>
               event.stopPropagation()
             }
           >
 
-            <button
-              type="button"
-              className="track-modal-close"
-              onClick={() =>
-                setActiveTrack(null)
-              }
-              aria-label="Close player"
-            >
-              ×
-            </button>
+            <audio
+              ref={audioRef}
+              src={activeTrack.audioUrl || ""}
+              preload="metadata"
+              aria-hidden="true"
+            />
 
+            {isPlayerMinimized ? (
 
-            <div className="track-modal-cover">
+              <div className="track-mini-player">
 
-              <img
-                src={
-                  activeTrack.cover ||
-                  activeTrack.image ||
-                  heroData.image
-                }
-                alt={activeTrack.title}
-              />
+                <div className="track-mini-cover">
+                  <img
+                    src={
+                      activeTrack.cover ||
+                      activeTrack.image ||
+                      heroData.image
+                    }
+                    alt={activeTrack.title}
+                  />
+                </div>
 
-            </div>
+                <div className="track-mini-info">
+                  <strong>{activeTrack.title}</strong>
+                  <span>
+                    {activeTrack.artist ||
+                      "LOWZACK"}
+                  </span>
+                </div>
 
+                <button
+                  type="button"
+                  className="track-mini-play"
+                  onClick={togglePlayback}
+                  aria-label={
+                    isPlaying
+                      ? "Pause"
+                      : "Play"
+                  }
+                >
+                  {isPlaying ? "Ⅱ" : "▶"}
+                </button>
 
-            <div className="track-modal-content">
+                <button
+                  type="button"
+                  className="track-mini-expand"
+                  onClick={() =>
+                    setIsPlayerMinimized(false)
+                  }
+                  aria-label="Expand player"
+                  title="Expand player"
+                >
+                  ↖
+                </button>
 
-              <span className="track-modal-eyebrow">
-                NOW PLAYING
-              </span>
+                <button
+                  type="button"
+                  className="track-mini-close"
+                  onClick={() => {
+                    setActiveTrack(null);
+                    setIsPlayerMinimized(false);
+                  }}
+                  aria-label="Close player"
+                  title="Close player"
+                >
+                  ×
+                </button>
 
-              <h2>
-                {activeTrack.title}
-              </h2>
+                <div
+                  className="track-mini-progress"
+                  style={{
+                    "--mini-progress":
+                      duration
+                        ? `${Math.min(
+                            100,
+                            (currentTime / duration) * 100
+                          )}%`
+                        : "0%",
+                  }}
+                />
 
-              <p>
-                {activeTrack.artist ||
-                  "LOWZACK"}
-              </p>
+              </div>
 
+            ) : (
 
-              {activeTrack.audioUrl ? (
+              <>
 
-                <div className="custom-audio-player">
+                <button
+                  type="button"
+                  className="track-modal-minimize"
+                  onClick={() =>
+                    setIsPlayerMinimized(true)
+                  }
+                  aria-label="Minimize player"
+                  title="Minimize player"
+                >
+                  ↘
+                </button>
 
-                  <audio
-                    ref={audioRef}
-                    src={activeTrack.audioUrl}
-                    preload="metadata"
-                    aria-hidden="true"
+                <button
+                  type="button"
+                  className="track-modal-close"
+                  onClick={() => {
+                    setActiveTrack(null);
+                    setIsPlayerMinimized(false);
+                  }}
+                  aria-label="Close player"
+                >
+                  ×
+                </button>
+
+                <div className="track-modal-cover">
+
+                  <img
+                    src={
+                      activeTrack.cover ||
+                      activeTrack.image ||
+                      heroData.image
+                    }
+                    alt={activeTrack.title}
                   />
 
+                </div>
 
-                  <button
-                    type="button"
-                    className="custom-audio-play"
-                    onClick={togglePlayback}
-                    aria-label={
-                      isPlaying
-                        ? "Pause"
-                        : "Play"
-                    }
-                  >
-                    {isPlaying ? "Ⅱ" : "▶"}
-                  </button>
+                <div className="track-modal-content">
 
-
-                  <div className="custom-audio-progress">
-
-                    <input
-                      type="range"
-                      min="0"
-                      max={duration || 0}
-                      step="0.01"
-                      value={
-                        Math.min(
-                          currentTime,
-                          duration || 0
-                        )
-                      }
-                      style={{
-                        "--audio-progress":
-                          duration
-                            ? `${Math.min(
-                              100,
-                              (currentTime / duration) * 100
-                            )}%`
-                            : "0%",
-                      }}
-                      onChange={handleSeek}
-                      aria-label="Audio progress"
-                    />
-
-                  </div>
-
-
-                  <div className="custom-audio-volume">
-
-                    <button
-                      type="button"
-                      className="custom-audio-volume-button"
-                      onClick={() => changeVolume(-0.1)}
-                      disabled={volume <= 0}
-                      aria-label="Decrease volume"
-                      title="Decrease volume"
-                    >
-                      −
-                    </button>
-
-                    <input
-                      type="range"
-                      min="0"
-                      max="1"
-                      step="0.01"
-                      value={volume}
-                      style={{
-                        "--audio-volume":
-                          `${Math.round(volume * 100)}%`,
-                      }}
-                      onChange={handleVolumeChange}
-                      aria-label={`Volume ${Math.round(volume * 100)} percent`}
-                    />
-
-                    <button
-                      type="button"
-                      className="custom-audio-volume-button"
-                      onClick={() => changeVolume(0.1)}
-                      disabled={volume >= 1}
-                      aria-label="Increase volume"
-                      title="Increase volume"
-                    >
-                      +
-                    </button>
-
-                  </div>
-
-
-                  <span className="custom-audio-time">
-                    {formatTime(currentTime)}
+                  <span className="track-modal-eyebrow">
+                    NOW PLAYING
                   </span>
+
+                  <h2>
+                    {activeTrack.title}
+                  </h2>
+
+                  <p>
+                    {activeTrack.artist ||
+                      "LOWZACK"}
+                  </p>
+
+                  {activeTrack.audioUrl ? (
+
+                    <div className="custom-audio-player">
+
+                      <button
+                        type="button"
+                        className="custom-audio-play"
+                        onClick={togglePlayback}
+                        aria-label={
+                          isPlaying
+                            ? "Pause"
+                            : "Play"
+                        }
+                      >
+                        {isPlaying ? "Ⅱ" : "▶"}
+                      </button>
+
+                      <div className="custom-audio-progress">
+
+                        <input
+                          type="range"
+                          min="0"
+                          max={duration || 0}
+                          step="0.01"
+                          value={
+                            Math.min(
+                              currentTime,
+                              duration || 0
+                            )
+                          }
+                          style={{
+                            "--audio-progress":
+                              duration
+                                ? `${Math.min(
+                                    100,
+                                    (currentTime / duration) * 100
+                                  )}%`
+                                : "0%",
+                          }}
+                          onChange={handleSeek}
+                          aria-label="Audio progress"
+                        />
+
+                      </div>
+
+                      <div className="custom-audio-volume">
+
+                        <button
+                          type="button"
+                          className="custom-audio-volume-button"
+                          onClick={() => changeVolume(-0.1)}
+                          disabled={volume <= 0}
+                          aria-label="Decrease volume"
+                          title="Decrease volume"
+                        >
+                          −
+                        </button>
+
+                        <input
+                          type="range"
+                          min="0"
+                          max="1"
+                          step="0.01"
+                          value={volume}
+                          style={{
+                            "--audio-volume":
+                              `${Math.round(volume * 100)}%`,
+                          }}
+                          onChange={handleVolumeChange}
+                          aria-label={`Volume ${Math.round(volume * 100)} percent`}
+                        />
+
+                        <button
+                          type="button"
+                          className="custom-audio-volume-button"
+                          onClick={() => changeVolume(0.1)}
+                          disabled={volume >= 1}
+                          aria-label="Increase volume"
+                          title="Increase volume"
+                        >
+                          +
+                        </button>
+
+                      </div>
+
+                      <span className="custom-audio-time">
+                        {formatTime(currentTime)}
+                      </span>
+
+                    </div>
+
+                  ) : (
+
+                    <div className="custom-audio-unavailable">
+
+                      <span>
+                        DIRECT AUDIO NOT AVAILABLE
+                      </span>
+
+                      <small>
+                        MUSIC AUDIO membutuhkan file audio langsung.
+                      </small>
+
+                    </div>
+
+                  )}
 
                 </div>
 
-              ) : (
+              </>
 
-                <div className="custom-audio-unavailable">
-
-                  <span>
-                    DIRECT AUDIO NOT AVAILABLE
-                  </span>
-
-                  <small>
-                    MUSIC AUDIO membutuhkan file audio langsung.
-                  </small>
-
-                </div>
-
-              )}
-
-            </div>
-
+            )}
 
           </div>
 

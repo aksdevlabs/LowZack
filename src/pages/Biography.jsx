@@ -116,7 +116,7 @@ function Biography() {
 
               <p>
                 LOWZACK lahir dan tumbuh dari pergerakan arus bawah
-                di Bogor Barat, Indonesia, LOWZACK adalah unit
+                di Bogor, Indonesia, LOWZACK adalah artis
                 Hip-Hop independen yang konsisten menembus
                 batas lewat rima dan ketukan beat yang tajam.
                 Memulai perjalanan musiknya sejak tahun 2018,
